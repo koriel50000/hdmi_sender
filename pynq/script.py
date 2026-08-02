@@ -10,7 +10,7 @@ def initial_fbuf ():
         for x in range(32):
             base[y + 24][x][0] = 0x80
             base[y][x + 32][0] = 0xc0
-    return np.tile(base, (15, 20, 3))
+    return np.tile(base, (10, 10, 3))
 
 def video_initialize (vdma):
     # video width and height
