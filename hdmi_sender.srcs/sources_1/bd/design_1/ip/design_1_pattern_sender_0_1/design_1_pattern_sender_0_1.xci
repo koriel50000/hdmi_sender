@@ -1,19 +1,19 @@
 {
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
-    "xci_name": "design_1_pattern_sender_0_0",
+    "xci_name": "design_1_pattern_sender_0_1",
     "cell_name": "pattern_sender_0",
     "component_reference": "xilinx.com:hls:pattern_sender:1.0",
-    "ip_revision": "2114712520",
-    "gen_directory": "../../../../../../hdmi_sender.gen/sources_1/bd/design_1/ip/design_1_pattern_sender_0_0",
+    "ip_revision": "2114723991",
+    "gen_directory": "../../../../../../hdmi_sender.gen/sources_1/bd/design_1/ip/design_1_pattern_sender_0_1",
     "parameters": {
       "component_parameters": {
-        "Component_Name": [ { "value": "design_1_pattern_sender_0_0", "resolve_type": "user", "usage": "all" } ],
+        "Component_Name": [ { "value": "design_1_pattern_sender_0_1", "resolve_type": "user", "usage": "all" } ],
         "clk_period": [ { "value": "10", "enabled": false, "usage": "all" } ],
         "machine": [ { "value": "64", "enabled": false, "usage": "all" } ],
         "combinational": [ { "value": "0", "enabled": false, "usage": "all" } ],
-        "latency": [ { "value": "384002", "enabled": false, "usage": "all" } ],
-        "II": [ { "value": "384000", "enabled": false, "usage": "all" } ]
+        "latency": [ { "value": "128002", "enabled": false, "usage": "all" } ],
+        "II": [ { "value": "128000", "enabled": false, "usage": "all" } ]
       },
       "model_parameters": {
         "C_S_AXI_CTRL_ADDR_WIDTH": [ { "value": "5", "resolve_type": "generated", "format": "long", "usage": "all" } ],
@@ -34,9 +34,9 @@
       },
       "runtime_parameters": {
         "IPCONTEXT": [ { "value": "IP_Integrator" } ],
-        "IPREVISION": [ { "value": "2114712520" } ],
+        "IPREVISION": [ { "value": "2114723991" } ],
         "MANAGED": [ { "value": "TRUE" } ],
-        "OUTPUTDIR": [ { "value": "../../../../../../hdmi_sender.gen/sources_1/bd/design_1/ip/design_1_pattern_sender_0_0" } ],
+        "OUTPUTDIR": [ { "value": "../../../../../../hdmi_sender.gen/sources_1/bd/design_1/ip/design_1_pattern_sender_0_1" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
         "SHAREDDIR": [ { "value": "../../ipshared" } ],
         "SWVERSION": [ { "value": "2025.2.1" } ],
@@ -386,5 +386,5 @@
       }
     }
   },
-  "checksum": "1c100c76"
+  "checksum": "d28e0685"
 }

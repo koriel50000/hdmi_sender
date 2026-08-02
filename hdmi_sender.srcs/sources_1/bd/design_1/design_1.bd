@@ -29,9 +29,9 @@
         },
         "m00_couplers": {}
       },
-      "pattern_sender_0": "",
       "xlconcat_0": "",
-      "axi_intc_0": ""
+      "axi_intc_0": "",
+      "pattern_sender_0": ""
     },
     "interface_ports": {
       "DDR": {
@@ -1990,37 +1990,37 @@
         "has_run_ip_tcl": "true",
         "parameters": {
           "CLKOUT1_JITTER": {
-            "value": "337.616"
+            "value": "228.282"
           },
           "CLKOUT1_PHASE_ERROR": {
-            "value": "322.999"
+            "value": "150.123"
           },
           "CLKOUT1_REQUESTED_OUT_FREQ": {
-            "value": "74.25"
+            "value": "25.175"
           },
           "CLKOUT2_JITTER": {
-            "value": "258.703"
+            "value": "160.495"
           },
           "CLKOUT2_PHASE_ERROR": {
-            "value": "322.999"
+            "value": "150.123"
           },
           "CLKOUT2_REQUESTED_OUT_FREQ": {
-            "value": "371.25"
+            "value": "125.875"
           },
           "CLKOUT2_USED": {
             "value": "true"
           },
           "MMCM_CLKFBOUT_MULT_F": {
-            "value": "37.125"
+            "value": "17.625"
           },
           "MMCM_CLKOUT0_DIVIDE_F": {
-            "value": "10.000"
+            "value": "35.000"
           },
           "MMCM_CLKOUT1_DIVIDE": {
-            "value": "2"
+            "value": "7"
           },
           "MMCM_DIVCLK_DIVIDE": {
-            "value": "5"
+            "value": "2"
           },
           "NUM_OUT_CLKS": {
             "value": "2"
@@ -2096,6 +2096,9 @@
         "parameters": {
           "HAS_AXI4_LITE": {
             "value": "false"
+          },
+          "VIDEO_MODE": {
+            "value": "480p"
           },
           "enable_detection": {
             "value": "false"
@@ -2853,14 +2856,6 @@
           }
         }
       },
-      "pattern_sender_0": {
-        "vlnv": "xilinx.com:hls:pattern_sender:1.0",
-        "ip_revision": "2114712520",
-        "xci_name": "design_1_pattern_sender_0_0",
-        "xci_path": "ip\\design_1_pattern_sender_0_0\\design_1_pattern_sender_0_0.xci",
-        "inst_hier_path": "pattern_sender_0",
-        "has_run_ip_tcl": "true"
-      },
       "xlconcat_0": {
         "vlnv": "xilinx.com:ip:xlconcat:2.1",
         "ip_revision": "7",
@@ -2891,6 +2886,14 @@
             }
           }
         }
+      },
+      "pattern_sender_0": {
+        "vlnv": "xilinx.com:hls:pattern_sender:1.0",
+        "ip_revision": "2114723991",
+        "xci_name": "design_1_pattern_sender_0_1",
+        "xci_path": "ip\\design_1_pattern_sender_0_1\\design_1_pattern_sender_0_1.xci",
+        "inst_hier_path": "pattern_sender_0",
+        "has_run_ip_tcl": "true"
       }
     },
     "interface_nets": {
@@ -3038,8 +3041,8 @@
           "axi_vdma_0/s_axis_s2mm_aclk",
           "axi_vdma_0/m_axis_mm2s_aclk",
           "v_axi4s_vid_out_0/aclk",
-          "pattern_sender_0/ap_clk",
-          "axi_intc_0/s_axi_aclk"
+          "axi_intc_0/s_axi_aclk",
+          "pattern_sender_0/ap_clk"
         ]
       },
       "processing_system7_0_FCLK_RESET0_N": {
@@ -3058,8 +3061,8 @@
           "axi_mem_intercon/ARESETN",
           "axi_mem_intercon/S01_ARESETN",
           "v_axi4s_vid_out_0/aresetn",
-          "pattern_sender_0/ap_rst_n",
-          "axi_intc_0/s_axi_aresetn"
+          "axi_intc_0/s_axi_aresetn",
+          "pattern_sender_0/ap_rst_n"
         ]
       },
       "rst_ps7_0_100M_peripheral_reset": {

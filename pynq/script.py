@@ -14,11 +14,11 @@ def initial_fbuf ():
 
 def video_initialize (vdma):
     # video width and height
-    VWIDTH = 1280
-    VHEIGHT = 720
+    VWIDTH = 640
+    VHEIGHT = 480
     # pattern shape
-    PWIDTH = 800
-    PHEIGHT = 480
+    PWIDTH = 400
+    PHEIGHT = 320
     PLEFT = (VWIDTH - PWIDTH) // 2
     PTOP = (VHEIGHT - PHEIGHT) // 2
     
