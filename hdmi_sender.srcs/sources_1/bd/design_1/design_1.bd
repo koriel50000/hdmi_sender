@@ -320,7 +320,21 @@
         "xci_name": "design_1_dvi2rgb_0_0",
         "xci_path": "ip\\design_1_dvi2rgb_0_0\\design_1_dvi2rgb_0_0.xci",
         "inst_hier_path": "dvi2rgb_0",
-        "has_run_ip_tcl": "true"
+        "has_run_ip_tcl": "true",
+        "parameters": {
+          "kAddBUFG": {
+            "value": "true"
+          },
+          "kClkRange": {
+            "value": "2"
+          },
+          "kEnableSerialClkOutput": {
+            "value": "false"
+          },
+          "kRstActiveHigh": {
+            "value": "true"
+          }
+        }
       },
       "rgb2dvi_0": {
         "vlnv": "digilentinc.com:ip:rgb2dvi:1.4",
@@ -328,7 +342,18 @@
         "xci_name": "design_1_rgb2dvi_0_0",
         "xci_path": "ip\\design_1_rgb2dvi_0_0\\design_1_rgb2dvi_0_0.xci",
         "inst_hier_path": "rgb2dvi_0",
-        "has_run_ip_tcl": "true"
+        "has_run_ip_tcl": "true",
+        "parameters": {
+          "kClkRange": {
+            "value": "2"
+          },
+          "kGenerateSerialClk": {
+            "value": "true"
+          },
+          "kRstActiveHigh": {
+            "value": "true"
+          }
+        }
       },
       "v_vid_in_axi4s_0": {
         "vlnv": "xilinx.com:ip:v_vid_in_axi4s:5.0",
@@ -344,7 +369,12 @@
         "xci_name": "design_1_v_axi4s_vid_out_0_0",
         "xci_path": "ip\\design_1_v_axi4s_vid_out_0_0\\design_1_v_axi4s_vid_out_0_0.xci",
         "inst_hier_path": "v_axi4s_vid_out_0",
-        "has_run_ip_tcl": "true"
+        "has_run_ip_tcl": "true",
+        "parameters": {
+          "C_HAS_ASYNC_CLK": {
+            "value": "0"
+          }
+        }
       },
       "processing_system7_0": {
         "vlnv": "xilinx.com:ip:processing_system7:5.5",
@@ -2081,11 +2111,50 @@
           "CLKOUT1_JITTER": {
             "value": "114.829"
           },
+          "CLKOUT1_PHASE_ERROR": {
+            "value": "98.575"
+          },
           "CLKOUT1_REQUESTED_OUT_FREQ": {
             "value": "200.000"
           },
+          "CLKOUT2_JITTER": {
+            "value": "128.710"
+          },
+          "CLKOUT2_PHASE_ERROR": {
+            "value": "91.100"
+          },
+          "CLKOUT2_REQUESTED_OUT_FREQ": {
+            "value": "74.25"
+          },
+          "CLKOUT2_USED": {
+            "value": "false"
+          },
+          "CLKOUT3_JITTER": {
+            "value": "95.380"
+          },
+          "CLKOUT3_PHASE_ERROR": {
+            "value": "91.100"
+          },
+          "CLKOUT3_REQUESTED_OUT_FREQ": {
+            "value": "371.25"
+          },
+          "CLKOUT3_USED": {
+            "value": "false"
+          },
+          "MMCM_CLKFBOUT_MULT_F": {
+            "value": "10.000"
+          },
           "MMCM_CLKOUT0_DIVIDE_F": {
             "value": "5.000"
+          },
+          "MMCM_CLKOUT1_DIVIDE": {
+            "value": "1"
+          },
+          "MMCM_CLKOUT2_DIVIDE": {
+            "value": "1"
+          },
+          "NUM_OUT_CLKS": {
+            "value": "1"
           }
         }
       },
@@ -2122,7 +2191,7 @@
             "value": "false"
           },
           "VIDEO_MODE": {
-            "value": "480p"
+            "value": "720p"
           },
           "auto_generation_mode": {
             "value": "true"
@@ -2193,19 +2262,19 @@
       }
     },
     "nets": {
-      "Net": {
-        "ports": [
-          "dvi2rgb_0/PixelClk",
-          "rgb2dvi_0/PixelClk",
-          "v_axi4s_vid_out_0/aclk",
-          "v_tc_0/clk",
-          "v_vid_in_axi4s_0/aclk"
-        ]
-      },
       "clk_wiz_0_clk_out1": {
         "ports": [
           "clk_wiz_0/clk_out1",
           "dvi2rgb_0/RefClk"
+        ]
+      },
+      "dvi2rgb_0_PixelClk": {
+        "ports": [
+          "dvi2rgb_0/PixelClk",
+          "rgb2dvi_0/PixelClk",
+          "v_tc_0/clk",
+          "v_vid_in_axi4s_0/aclk",
+          "v_axi4s_vid_out_0/aclk"
         ]
       },
       "one_dout": {

@@ -10,10 +10,10 @@
       "component_parameters": {
         "Component_Name": [ { "value": "design_1_dvi2rgb_0_0", "resolve_type": "user", "usage": "all" } ],
         "kEmulateDDC": [ { "value": "true", "resolve_type": "user", "format": "bool", "usage": "all" } ],
-        "kEnableSerialClkOutput": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
-        "kRstActiveHigh": [ { "value": "true", "resolve_type": "user", "format": "bool", "usage": "all" } ],
-        "kClkRange": [ { "value": "2", "resolve_type": "user", "format": "long", "usage": "all" } ],
-        "kAddBUFG": [ { "value": "true", "resolve_type": "user", "format": "bool", "usage": "all" } ],
+        "kEnableSerialClkOutput": [ { "value": "false", "value_src": "user", "resolve_type": "user", "format": "bool", "usage": "all" } ],
+        "kRstActiveHigh": [ { "value": "true", "value_src": "user", "resolve_type": "user", "format": "bool", "usage": "all" } ],
+        "kClkRange": [ { "value": "2", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "kAddBUFG": [ { "value": "true", "value_src": "user", "resolve_type": "user", "format": "bool", "usage": "all" } ],
         "kEdidFileName": [ { "value": "dgl_720p_cea.data", "resolve_type": "user", "usage": "all" } ],
         "TMDS_BOARD_INTERFACE": [ { "value": "", "resolve_type": "user", "usage": "all" } ],
         "IIC_BOARD_INTERFACE": [ { "value": "", "resolve_type": "user", "usage": "all" } ],
@@ -114,7 +114,7 @@
           "abstraction_type": "xilinx.com:signal:reset_rtl:1.0",
           "mode": "slave",
           "parameters": {
-            "POLARITY": [ { "value": "ACTIVE_LOW", "value_src": "constant", "usage": "all" } ],
+            "POLARITY": [ { "value": "ACTIVE_LOW", "value_src": "constant", "value_permission": "bd_and_user", "usage": "all" } ],
             "INSERT_VIP": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "simulation.rtl", "is_ips_inferred": true, "is_static_object": false } ]
           }
         },
@@ -123,7 +123,7 @@
           "abstraction_type": "xilinx.com:signal:reset_rtl:1.0",
           "mode": "slave",
           "parameters": {
-            "POLARITY": [ { "value": "ACTIVE_LOW", "value_src": "constant", "usage": "all" } ],
+            "POLARITY": [ { "value": "ACTIVE_LOW", "value_src": "constant", "value_permission": "bd_and_user", "usage": "all" } ],
             "INSERT_VIP": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "simulation.rtl", "is_ips_inferred": true, "is_static_object": false } ]
           }
         },
@@ -211,5 +211,5 @@
       }
     }
   },
-  "checksum": "f5c643d6"
+  "checksum": "98638ae4"
 }

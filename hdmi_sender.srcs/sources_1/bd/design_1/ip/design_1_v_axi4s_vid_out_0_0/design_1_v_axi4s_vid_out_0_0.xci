@@ -13,7 +13,7 @@
         "C_S_AXIS_VIDEO_FORMAT": [ { "value": "2", "value_src": "propagated", "value_permission": "bd_and_user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "C_S_AXIS_VIDEO_DATA_WIDTH": [ { "value": "8", "value_src": "propagated", "value_permission": "bd_and_user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "C_NATIVE_COMPONENT_WIDTH": [ { "value": "8", "resolve_type": "user", "format": "long", "usage": "all" } ],
-        "C_HAS_ASYNC_CLK": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "C_HAS_ASYNC_CLK": [ { "value": "0", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "C_ADDR_WIDTH": [ { "value": "10", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "C_HYSTERESIS_LEVEL": [ { "value": "12", "resolve_type": "user", "format": "long", "usage": "all" } ],
         "C_VTG_MASTER_SLAVE": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "all" } ],
@@ -213,5 +213,5 @@
       }
     }
   },
-  "checksum": "06267063"
+  "checksum": "196375a1"
 }
