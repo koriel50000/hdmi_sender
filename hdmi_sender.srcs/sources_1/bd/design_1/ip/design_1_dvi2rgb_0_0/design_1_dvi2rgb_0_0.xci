@@ -3,21 +3,20 @@
   "ip_inst": {
     "xci_name": "design_1_dvi2rgb_0_0",
     "cell_name": "dvi2rgb_0",
-    "component_reference": "digilentinc.com:ip:dvi2rgb:2.0",
-    "ip_revision": "8",
+    "component_reference": "digilentinc.com:ip:dvi2rgb:1.7",
+    "ip_revision": "3",
     "gen_directory": "../../../../../../hdmi_sender.gen/sources_1/bd/design_1/ip/design_1_dvi2rgb_0_0",
     "parameters": {
       "component_parameters": {
         "Component_Name": [ { "value": "design_1_dvi2rgb_0_0", "resolve_type": "user", "usage": "all" } ],
         "kEmulateDDC": [ { "value": "true", "resolve_type": "user", "format": "bool", "usage": "all" } ],
-        "kEnableSerialClkOutput": [ { "value": "false", "value_src": "user", "resolve_type": "user", "format": "bool", "usage": "all" } ],
-        "kRstActiveHigh": [ { "value": "true", "value_src": "user", "resolve_type": "user", "format": "bool", "usage": "all" } ],
-        "kClkRange": [ { "value": "2", "value_src": "user", "resolve_type": "user", "format": "long", "usage": "all" } ],
-        "kAddBUFG": [ { "value": "true", "value_src": "user", "resolve_type": "user", "format": "bool", "usage": "all" } ],
-        "kEdidFileName": [ { "value": "dgl_720p_cea.data", "resolve_type": "user", "usage": "all" } ],
+        "kEnableSerialClkOutput": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ],
+        "kRstActiveHigh": [ { "value": "true", "resolve_type": "user", "format": "bool", "usage": "all" } ],
+        "kClkRange": [ { "value": "2", "resolve_type": "user", "format": "long", "usage": "all" } ],
+        "kAddBUFG": [ { "value": "true", "resolve_type": "user", "format": "bool", "usage": "all" } ],
+        "kEdidFileName": [ { "value": "720p_edid.data", "value_src": "user", "resolve_type": "user", "usage": "all" } ],
         "TMDS_BOARD_INTERFACE": [ { "value": "", "resolve_type": "user", "usage": "all" } ],
-        "IIC_BOARD_INTERFACE": [ { "value": "", "resolve_type": "user", "usage": "all" } ],
-        "kDebug": [ { "value": "false", "resolve_type": "user", "format": "bool", "usage": "all" } ]
+        "IIC_BOARD_INTERFACE": [ { "value": "", "resolve_type": "user", "usage": "all" } ]
       },
       "model_parameters": {
         "kEmulateDDC": [ { "value": "true", "resolve_type": "generated", "format": "bool", "usage": "all" } ],
@@ -26,8 +25,7 @@
         "kIDLY_TapValuePs": [ { "value": "78", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "kIDLY_TapWidth": [ { "value": "5", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "kAddBUFG": [ { "value": "true", "resolve_type": "generated", "format": "bool", "usage": "all" } ],
-        "kEdidFileName": [ { "value": "dgl_720p_cea.data", "resolve_type": "generated", "usage": "all" } ],
-        "kDebug": [ { "value": "false", "resolve_type": "generated", "format": "bool", "usage": "all" } ]
+        "kEdidFileName": [ { "value": "720p_edid.data", "resolve_type": "generated", "usage": "all" } ]
       },
       "project_parameters": {
         "ARCHITECTURE": [ { "value": "zynq", "resolve_type": "generated", "usage": "all" } ],
@@ -44,7 +42,7 @@
       },
       "runtime_parameters": {
         "IPCONTEXT": [ { "value": "IP_Integrator" } ],
-        "IPREVISION": [ { "value": "8" } ],
+        "IPREVISION": [ { "value": "3" } ],
         "MANAGED": [ { "value": "TRUE" } ],
         "OUTPUTDIR": [ { "value": "../../../../../../hdmi_sender.gen/sources_1/bd/design_1/ip/design_1_dvi2rgb_0_0" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
@@ -67,13 +65,12 @@
         "vid_pVSync": [ { "direction": "out" } ],
         "PixelClk": [ { "direction": "out" } ],
         "aPixelClkLckd": [ { "direction": "out" } ],
-        "pLocked": [ { "direction": "out" } ],
-        "SDA_I": [ { "direction": "in" } ],
-        "SDA_O": [ { "direction": "out" } ],
-        "SDA_T": [ { "direction": "out" } ],
-        "SCL_I": [ { "direction": "in" } ],
-        "SCL_O": [ { "direction": "out" } ],
-        "SCL_T": [ { "direction": "out" } ],
+        "DDC_SDA_I": [ { "direction": "in" } ],
+        "DDC_SDA_O": [ { "direction": "out" } ],
+        "DDC_SDA_T": [ { "direction": "out" } ],
+        "DDC_SCL_I": [ { "direction": "in" } ],
+        "DDC_SCL_O": [ { "direction": "out" } ],
+        "DDC_SCL_T": [ { "direction": "out" } ],
         "pRst": [ { "direction": "in", "driver_value": "0" } ]
       },
       "interfaces": {
@@ -96,7 +93,7 @@
           "abstraction_type": "xilinx.com:signal:clock_rtl:1.0",
           "mode": "slave",
           "parameters": {
-            "FREQ_HZ": [ { "value": "200000000", "value_src": "constant", "value_permission": "bd_and_user", "usage": "all" } ],
+            "FREQ_HZ": [ { "value": "200000000", "value_src": "ip_propagated", "value_permission": "bd_and_user", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
             "FREQ_TOLERANCE_HZ": [ { "value": "0", "value_permission": "bd_and_user", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
             "PHASE": [ { "value": "0.0", "value_src": "ip_propagated", "value_permission": "bd_and_user", "resolve_type": "generated", "format": "float", "is_ips_inferred": true, "is_static_object": false } ],
             "CLK_DOMAIN": [ { "value": "/clk_wiz_0_clk_out1", "value_src": "ip_propagated", "value_permission": "bd_and_user", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
@@ -109,12 +106,28 @@
             "CLK": [ { "physical_name": "RefClk" } ]
           }
         },
+        "DDC": {
+          "vlnv": "xilinx.com:interface:iic:1.0",
+          "abstraction_type": "xilinx.com:interface:iic_rtl:1.0",
+          "mode": "master",
+          "parameters": {
+            "BOARD.ASSOCIATED_PARAM": [ { "value": "IIC_BOARD_INTERFACE", "value_src": "constant", "value_permission": "bd", "usage": "all" } ]
+          },
+          "port_maps": {
+            "SCL_I": [ { "physical_name": "DDC_SCL_I" } ],
+            "SCL_O": [ { "physical_name": "DDC_SCL_O" } ],
+            "SCL_T": [ { "physical_name": "DDC_SCL_T" } ],
+            "SDA_I": [ { "physical_name": "DDC_SDA_I" } ],
+            "SDA_O": [ { "physical_name": "DDC_SDA_O" } ],
+            "SDA_T": [ { "physical_name": "DDC_SDA_T" } ]
+          }
+        },
         "AsyncRst_n": {
           "vlnv": "xilinx.com:signal:reset:1.0",
           "abstraction_type": "xilinx.com:signal:reset_rtl:1.0",
           "mode": "slave",
           "parameters": {
-            "POLARITY": [ { "value": "ACTIVE_LOW", "value_src": "constant", "value_permission": "bd_and_user", "usage": "all" } ],
+            "POLARITY": [ { "value": "ACTIVE_LOW", "value_src": "constant", "usage": "all" } ],
             "INSERT_VIP": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "simulation.rtl", "is_ips_inferred": true, "is_static_object": false } ]
           }
         },
@@ -123,7 +136,7 @@
           "abstraction_type": "xilinx.com:signal:reset_rtl:1.0",
           "mode": "slave",
           "parameters": {
-            "POLARITY": [ { "value": "ACTIVE_LOW", "value_src": "constant", "value_permission": "bd_and_user", "usage": "all" } ],
+            "POLARITY": [ { "value": "ACTIVE_LOW", "value_src": "constant", "usage": "all" } ],
             "INSERT_VIP": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "simulation.rtl", "is_ips_inferred": true, "is_static_object": false } ]
           }
         },
@@ -155,61 +168,9 @@
           "port_maps": {
             "CLK": [ { "physical_name": "PixelClk" } ]
           }
-        },
-        "TMDS_Clk_n": {
-          "vlnv": "xilinx.com:signal:clock:1.0",
-          "abstraction_type": "xilinx.com:signal:clock_rtl:1.0",
-          "mode": "slave",
-          "parameters": {
-            "ASSOCIATED_RESET": [ { "value": "aRst_n:AsyncRst_n", "value_src": "constant", "value_permission": "bd_and_user", "usage": "all" } ],
-            "FREQ_HZ": [ { "value": "100000000", "value_permission": "bd_and_user", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
-            "FREQ_TOLERANCE_HZ": [ { "value": "0", "value_permission": "bd_and_user", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
-            "PHASE": [ { "value": "0.0", "value_permission": "bd_and_user", "resolve_type": "generated", "format": "float", "is_ips_inferred": true, "is_static_object": false } ],
-            "CLK_DOMAIN": [ { "value": "", "value_permission": "bd_and_user", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
-            "ASSOCIATED_BUSIF": [ { "value": "", "value_permission": "bd_and_user", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
-            "ASSOCIATED_PORT": [ { "value": "", "value_permission": "bd_and_user", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
-            "INSERT_VIP": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "simulation.rtl", "is_ips_inferred": true, "is_static_object": false } ]
-          },
-          "port_maps": {
-            "CLK": [ { "physical_name": "TMDS_Clk_n" } ]
-          }
-        },
-        "TMDS_Clk_p": {
-          "vlnv": "xilinx.com:signal:clock:1.0",
-          "abstraction_type": "xilinx.com:signal:clock_rtl:1.0",
-          "mode": "slave",
-          "parameters": {
-            "ASSOCIATED_RESET": [ { "value": "pRst", "value_src": "constant", "value_permission": "bd_and_user", "usage": "all" } ],
-            "FREQ_HZ": [ { "value": "100000000", "value_permission": "bd_and_user", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
-            "FREQ_TOLERANCE_HZ": [ { "value": "0", "value_permission": "bd_and_user", "resolve_type": "generated", "format": "long", "is_ips_inferred": true, "is_static_object": false } ],
-            "PHASE": [ { "value": "0.0", "value_permission": "bd_and_user", "resolve_type": "generated", "format": "float", "is_ips_inferred": true, "is_static_object": false } ],
-            "CLK_DOMAIN": [ { "value": "", "value_permission": "bd_and_user", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
-            "ASSOCIATED_BUSIF": [ { "value": "", "value_permission": "bd_and_user", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
-            "ASSOCIATED_PORT": [ { "value": "", "value_permission": "bd_and_user", "resolve_type": "generated", "is_ips_inferred": true, "is_static_object": false } ],
-            "INSERT_VIP": [ { "value": "0", "resolve_type": "user", "format": "long", "usage": "simulation.rtl", "is_ips_inferred": true, "is_static_object": false } ]
-          },
-          "port_maps": {
-            "CLK": [ { "physical_name": "TMDS_Clk_p" } ]
-          }
-        },
-        "DDC": {
-          "vlnv": "xilinx.com:interface:iic:1.0",
-          "abstraction_type": "xilinx.com:interface:iic_rtl:1.0",
-          "mode": "master",
-          "parameters": {
-            "BOARD.ASSOCIATED_PARAM": [ { "value": "IIC_BOARD_INTERFACE", "value_src": "constant", "value_permission": "bd", "usage": "all" } ]
-          },
-          "port_maps": {
-            "SCL_I": [ { "physical_name": "SCL_I" } ],
-            "SCL_O": [ { "physical_name": "SCL_O" } ],
-            "SCL_T": [ { "physical_name": "SCL_T" } ],
-            "SDA_I": [ { "physical_name": "SDA_I" } ],
-            "SDA_O": [ { "physical_name": "SDA_O" } ],
-            "SDA_T": [ { "physical_name": "SDA_T" } ]
-          }
         }
       }
     }
   },
-  "checksum": "98638ae4"
+  "checksum": "2d5c385c"
 }

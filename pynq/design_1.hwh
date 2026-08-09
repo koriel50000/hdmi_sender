@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Aug  9 12:16:50 2026" VIVADOVERSION="2025.2.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Sun Aug  9 19:53:58 2026" VIVADOVERSION="2025.2.1">
 
   <SYSTEMINFO ARCH="zynq" BOARD="www.digilentinc.com:pynq-z1:part0:1.0" DEVICE="7z020" NAME="design_1" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -129,34 +129,34 @@
         <CONNECTION INSTANCE="dvi2rgb_0" PORT="TMDS_Data_p"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="I" NAME="hdmi_in_ddc_scl_i" SIGIS="undef" SIGNAME="dvi2rgb_0_SCL_I">
+    <PORT DIR="I" NAME="hdmi_in_ddc_scl_i" SIGIS="undef" SIGNAME="dvi2rgb_0_DDC_SCL_I">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="dvi2rgb_0" PORT="SCL_I"/>
+        <CONNECTION INSTANCE="dvi2rgb_0" PORT="DDC_SCL_I"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" NAME="hdmi_in_ddc_scl_o" SIGIS="undef" SIGNAME="dvi2rgb_0_SCL_O">
+    <PORT DIR="O" NAME="hdmi_in_ddc_scl_o" SIGIS="undef" SIGNAME="dvi2rgb_0_DDC_SCL_O">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="dvi2rgb_0" PORT="SCL_O"/>
+        <CONNECTION INSTANCE="dvi2rgb_0" PORT="DDC_SCL_O"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" NAME="hdmi_in_ddc_scl_t" SIGIS="undef" SIGNAME="dvi2rgb_0_SCL_T">
+    <PORT DIR="O" NAME="hdmi_in_ddc_scl_t" SIGIS="undef" SIGNAME="dvi2rgb_0_DDC_SCL_T">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="dvi2rgb_0" PORT="SCL_T"/>
+        <CONNECTION INSTANCE="dvi2rgb_0" PORT="DDC_SCL_T"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="I" NAME="hdmi_in_ddc_sda_i" SIGIS="undef" SIGNAME="dvi2rgb_0_SDA_I">
+    <PORT DIR="I" NAME="hdmi_in_ddc_sda_i" SIGIS="undef" SIGNAME="dvi2rgb_0_DDC_SDA_I">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="dvi2rgb_0" PORT="SDA_I"/>
+        <CONNECTION INSTANCE="dvi2rgb_0" PORT="DDC_SDA_I"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" NAME="hdmi_in_ddc_sda_o" SIGIS="undef" SIGNAME="dvi2rgb_0_SDA_O">
+    <PORT DIR="O" NAME="hdmi_in_ddc_sda_o" SIGIS="undef" SIGNAME="dvi2rgb_0_DDC_SDA_O">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="dvi2rgb_0" PORT="SDA_O"/>
+        <CONNECTION INSTANCE="dvi2rgb_0" PORT="DDC_SDA_O"/>
       </CONNECTIONS>
     </PORT>
-    <PORT DIR="O" NAME="hdmi_in_ddc_sda_t" SIGIS="undef" SIGNAME="dvi2rgb_0_SDA_T">
+    <PORT DIR="O" NAME="hdmi_in_ddc_sda_t" SIGIS="undef" SIGNAME="dvi2rgb_0_DDC_SDA_T">
       <CONNECTIONS>
-        <CONNECTION INSTANCE="dvi2rgb_0" PORT="SDA_T"/>
+        <CONNECTION INSTANCE="dvi2rgb_0" PORT="DDC_SDA_T"/>
       </CONNECTIONS>
     </PORT>
     <PORT DIR="O" LEFT="0" NAME="hdmi_in_hpd" RIGHT="0" SIGIS="undef" SIGNAME="one_dout">
@@ -231,14 +231,6 @@
         <PORTMAP LOGICAL="PS_SRSTB" PHYSICAL="FIXED_IO_ps_srstb"/>
       </PORTMAPS>
     </BUSINTERFACE>
-    <BUSINTERFACE BUSNAME="External_Interface_hdmi_in" NAME="hdmi_in" TYPE="TARGET">
-      <PORTMAPS>
-        <PORTMAP LOGICAL="CLK_N" PHYSICAL="hdmi_in_clk_n"/>
-        <PORTMAP LOGICAL="CLK_P" PHYSICAL="hdmi_in_clk_p"/>
-        <PORTMAP LOGICAL="DATA_N" PHYSICAL="hdmi_in_data_n"/>
-        <PORTMAP LOGICAL="DATA_P" PHYSICAL="hdmi_in_data_p"/>
-      </PORTMAPS>
-    </BUSINTERFACE>
     <BUSINTERFACE BUSNAME="rgb2dvi_0_TMDS" NAME="hdmi_out" TYPE="INITIATOR">
       <PORTMAPS>
         <PORTMAP LOGICAL="CLK_N" PHYSICAL="hdmi_out_clk_n"/>
@@ -255,6 +247,14 @@
         <PORTMAP LOGICAL="SDA_I" PHYSICAL="hdmi_in_ddc_sda_i"/>
         <PORTMAP LOGICAL="SDA_O" PHYSICAL="hdmi_in_ddc_sda_o"/>
         <PORTMAP LOGICAL="SDA_T" PHYSICAL="hdmi_in_ddc_sda_t"/>
+      </PORTMAPS>
+    </BUSINTERFACE>
+    <BUSINTERFACE BUSNAME="External_Interface_hdmi_in" NAME="hdmi_in" TYPE="TARGET">
+      <PORTMAPS>
+        <PORTMAP LOGICAL="CLK_N" PHYSICAL="hdmi_in_clk_n"/>
+        <PORTMAP LOGICAL="CLK_P" PHYSICAL="hdmi_in_clk_p"/>
+        <PORTMAP LOGICAL="DATA_N" PHYSICAL="hdmi_in_data_n"/>
+        <PORTMAP LOGICAL="DATA_P" PHYSICAL="hdmi_in_data_p"/>
       </PORTMAPS>
     </BUSINTERFACE>
   </EXTERNALINTERFACES>
@@ -285,7 +285,7 @@
         <PARAMETER NAME="C_CLKOUT0_ACTUAL_FREQ" VALUE="200.00000"/>
         <PARAMETER NAME="C_CLKOUT1_1" VALUE="0000"/>
         <PARAMETER NAME="C_CLKOUT1_2" VALUE="0000"/>
-        <PARAMETER NAME="C_CLKOUT1_ACTUAL_FREQ" VALUE="75.00000"/>
+        <PARAMETER NAME="C_CLKOUT1_ACTUAL_FREQ" VALUE="100.000"/>
         <PARAMETER NAME="C_CLKOUT1_DRIVES" VALUE="BUFG"/>
         <PARAMETER NAME="C_CLKOUT1_DUTY_CYCLE" VALUE="50.0"/>
         <PARAMETER NAME="C_CLKOUT1_MATCHED_ROUTING" VALUE="false"/>
@@ -297,14 +297,14 @@
         <PARAMETER NAME="C_CLKOUT1_SEQUENCE_NUMBER" VALUE="1"/>
         <PARAMETER NAME="C_CLKOUT2_1" VALUE="0000"/>
         <PARAMETER NAME="C_CLKOUT2_2" VALUE="0000"/>
-        <PARAMETER NAME="C_CLKOUT2_ACTUAL_FREQ" VALUE="375.00000"/>
+        <PARAMETER NAME="C_CLKOUT2_ACTUAL_FREQ" VALUE="100.000"/>
         <PARAMETER NAME="C_CLKOUT2_DRIVES" VALUE="BUFG"/>
-        <PARAMETER NAME="C_CLKOUT2_DUTY_CYCLE" VALUE="50.0"/>
+        <PARAMETER NAME="C_CLKOUT2_DUTY_CYCLE" VALUE="50.000"/>
         <PARAMETER NAME="C_CLKOUT2_MATCHED_ROUTING" VALUE="false"/>
-        <PARAMETER NAME="C_CLKOUT2_OUT_FREQ" VALUE="75.00000"/>
+        <PARAMETER NAME="C_CLKOUT2_OUT_FREQ" VALUE="100.000"/>
         <PARAMETER NAME="C_CLKOUT2_PHASE" VALUE="0.000"/>
         <PARAMETER NAME="C_CLKOUT2_REQUESTED_DUTY_CYCLE" VALUE="50.000"/>
-        <PARAMETER NAME="C_CLKOUT2_REQUESTED_OUT_FREQ" VALUE="74.25"/>
+        <PARAMETER NAME="C_CLKOUT2_REQUESTED_OUT_FREQ" VALUE="100.000"/>
         <PARAMETER NAME="C_CLKOUT2_REQUESTED_PHASE" VALUE="0.000"/>
         <PARAMETER NAME="C_CLKOUT2_SEQUENCE_NUMBER" VALUE="1"/>
         <PARAMETER NAME="C_CLKOUT2_USED" VALUE="0"/>
@@ -312,12 +312,12 @@
         <PARAMETER NAME="C_CLKOUT3_2" VALUE="0000"/>
         <PARAMETER NAME="C_CLKOUT3_ACTUAL_FREQ" VALUE="100.000"/>
         <PARAMETER NAME="C_CLKOUT3_DRIVES" VALUE="BUFG"/>
-        <PARAMETER NAME="C_CLKOUT3_DUTY_CYCLE" VALUE="50.0"/>
+        <PARAMETER NAME="C_CLKOUT3_DUTY_CYCLE" VALUE="50.000"/>
         <PARAMETER NAME="C_CLKOUT3_MATCHED_ROUTING" VALUE="false"/>
-        <PARAMETER NAME="C_CLKOUT3_OUT_FREQ" VALUE="375.00000"/>
+        <PARAMETER NAME="C_CLKOUT3_OUT_FREQ" VALUE="100.000"/>
         <PARAMETER NAME="C_CLKOUT3_PHASE" VALUE="0.000"/>
         <PARAMETER NAME="C_CLKOUT3_REQUESTED_DUTY_CYCLE" VALUE="50.000"/>
-        <PARAMETER NAME="C_CLKOUT3_REQUESTED_OUT_FREQ" VALUE="371.25"/>
+        <PARAMETER NAME="C_CLKOUT3_REQUESTED_OUT_FREQ" VALUE="100.000"/>
         <PARAMETER NAME="C_CLKOUT3_REQUESTED_PHASE" VALUE="0.000"/>
         <PARAMETER NAME="C_CLKOUT3_SEQUENCE_NUMBER" VALUE="1"/>
         <PARAMETER NAME="C_CLKOUT3_USED" VALUE="0"/>
@@ -608,20 +608,20 @@
         <PARAMETER NAME="CLKOUT1_SEQUENCE_NUMBER" VALUE="1"/>
         <PARAMETER NAME="CLKOUT1_USED" VALUE="true"/>
         <PARAMETER NAME="CLKOUT2_DRIVES" VALUE="BUFG"/>
-        <PARAMETER NAME="CLKOUT2_JITTER" VALUE="128.710"/>
+        <PARAMETER NAME="CLKOUT2_JITTER" VALUE="0.0"/>
         <PARAMETER NAME="CLKOUT2_MATCHED_ROUTING" VALUE="false"/>
-        <PARAMETER NAME="CLKOUT2_PHASE_ERROR" VALUE="91.100"/>
+        <PARAMETER NAME="CLKOUT2_PHASE_ERROR" VALUE="0.0"/>
         <PARAMETER NAME="CLKOUT2_REQUESTED_DUTY_CYCLE" VALUE="50.000"/>
-        <PARAMETER NAME="CLKOUT2_REQUESTED_OUT_FREQ" VALUE="74.25"/>
+        <PARAMETER NAME="CLKOUT2_REQUESTED_OUT_FREQ" VALUE="100.000"/>
         <PARAMETER NAME="CLKOUT2_REQUESTED_PHASE" VALUE="0.000"/>
         <PARAMETER NAME="CLKOUT2_SEQUENCE_NUMBER" VALUE="1"/>
         <PARAMETER NAME="CLKOUT2_USED" VALUE="false"/>
         <PARAMETER NAME="CLKOUT3_DRIVES" VALUE="BUFG"/>
-        <PARAMETER NAME="CLKOUT3_JITTER" VALUE="95.380"/>
+        <PARAMETER NAME="CLKOUT3_JITTER" VALUE="0.0"/>
         <PARAMETER NAME="CLKOUT3_MATCHED_ROUTING" VALUE="false"/>
-        <PARAMETER NAME="CLKOUT3_PHASE_ERROR" VALUE="91.100"/>
+        <PARAMETER NAME="CLKOUT3_PHASE_ERROR" VALUE="0.0"/>
         <PARAMETER NAME="CLKOUT3_REQUESTED_DUTY_CYCLE" VALUE="50.000"/>
-        <PARAMETER NAME="CLKOUT3_REQUESTED_OUT_FREQ" VALUE="371.25"/>
+        <PARAMETER NAME="CLKOUT3_REQUESTED_OUT_FREQ" VALUE="100.000"/>
         <PARAMETER NAME="CLKOUT3_REQUESTED_PHASE" VALUE="0.000"/>
         <PARAMETER NAME="CLKOUT3_SEQUENCE_NUMBER" VALUE="1"/>
         <PARAMETER NAME="CLKOUT3_USED" VALUE="false"/>
@@ -859,15 +859,14 @@
       </PORTS>
       <BUSINTERFACES/>
     </MODULE>
-    <MODULE COREREVISION="8" FULLNAME="/dvi2rgb_0" HWVERSION="2.0" INSTANCE="dvi2rgb_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="dvi2rgb" VLNV="digilentinc.com:ip:dvi2rgb:2.0">
+    <MODULE COREREVISION="3" FULLNAME="/dvi2rgb_0" HWVERSION="1.7" INSTANCE="dvi2rgb_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="dvi2rgb" VLNV="digilentinc.com:ip:dvi2rgb:1.7">
       <DOCUMENTS>
-        <DOCUMENT SOURCE="e:/workspace/IntelliJ/hdmi_sender/vivado-library/ip/dvi2rgb/docs/dvi2rgb.pdf"/>
+        <DOCUMENT SOURCE="e:/workspace/IntelliJ/hdmi_sender/vivado-library/ip/dvi2rgb_v1_7/docs/dvi2rgb.pdf"/>
       </DOCUMENTS>
       <PARAMETERS>
         <PARAMETER NAME="kAddBUFG" VALUE="true"/>
         <PARAMETER NAME="kClkRange" VALUE="2"/>
-        <PARAMETER NAME="kDebug" VALUE="false"/>
-        <PARAMETER NAME="kEdidFileName" VALUE="dgl_720p_cea.data"/>
+        <PARAMETER NAME="kEdidFileName" VALUE="720p_edid.data"/>
         <PARAMETER NAME="kEmulateDDC" VALUE="true"/>
         <PARAMETER NAME="kIDLY_TapValuePs" VALUE="78"/>
         <PARAMETER NAME="kIDLY_TapWidth" VALUE="5"/>
@@ -879,12 +878,42 @@
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
+        <PORT DIR="I" NAME="DDC_SCL_I" SIGIS="undef" SIGNAME="dvi2rgb_0_DDC_SCL_I">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="design_1_imp" PORT="hdmi_in_ddc_scl_i"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="DDC_SCL_O" SIGIS="undef" SIGNAME="dvi2rgb_0_DDC_SCL_O">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="design_1_imp" PORT="hdmi_in_ddc_scl_o"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="DDC_SCL_T" SIGIS="undef" SIGNAME="dvi2rgb_0_DDC_SCL_T">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="design_1_imp" PORT="hdmi_in_ddc_scl_t"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="DDC_SDA_I" SIGIS="undef" SIGNAME="dvi2rgb_0_DDC_SDA_I">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="design_1_imp" PORT="hdmi_in_ddc_sda_i"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="DDC_SDA_O" SIGIS="undef" SIGNAME="dvi2rgb_0_DDC_SDA_O">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="design_1_imp" PORT="hdmi_in_ddc_sda_o"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="O" NAME="DDC_SDA_T" SIGIS="undef" SIGNAME="dvi2rgb_0_DDC_SDA_T">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="design_1_imp" PORT="hdmi_in_ddc_sda_t"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT CLKFREQUENCY="100000000" DIR="O" NAME="PixelClk" SIGIS="clk" SIGNAME="dvi2rgb_0_PixelClk">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="rgb2dvi_0" PORT="PixelClk"/>
-            <CONNECTION INSTANCE="v_tc_0" PORT="clk"/>
-            <CONNECTION INSTANCE="v_vid_in_axi4s_0" PORT="aclk"/>
             <CONNECTION INSTANCE="v_axi4s_vid_out_0" PORT="aclk"/>
+            <CONNECTION INSTANCE="rgb2dvi_0" PORT="PixelClk"/>
+            <CONNECTION INSTANCE="v_vid_in_axi4s_0" PORT="aclk"/>
+            <CONNECTION INSTANCE="v_tc_0" PORT="clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="200000000" DIR="I" NAME="RefClk" SIGIS="clk" SIGNAME="clk_wiz_0_clk_out1">
@@ -892,42 +921,12 @@
             <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_out1"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="SCL_I" SIGIS="undef" SIGNAME="dvi2rgb_0_SCL_I">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="design_1_imp" PORT="hdmi_in_ddc_scl_i"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="SCL_O" SIGIS="undef" SIGNAME="dvi2rgb_0_SCL_O">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="design_1_imp" PORT="hdmi_in_ddc_scl_o"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="SCL_T" SIGIS="undef" SIGNAME="dvi2rgb_0_SCL_T">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="design_1_imp" PORT="hdmi_in_ddc_scl_t"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="SDA_I" SIGIS="undef" SIGNAME="dvi2rgb_0_SDA_I">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="design_1_imp" PORT="hdmi_in_ddc_sda_i"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="SDA_O" SIGIS="undef" SIGNAME="dvi2rgb_0_SDA_O">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="design_1_imp" PORT="hdmi_in_ddc_sda_o"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="SDA_T" SIGIS="undef" SIGNAME="dvi2rgb_0_SDA_T">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="design_1_imp" PORT="hdmi_in_ddc_sda_t"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="TMDS_Clk_n" SIGIS="clk" SIGNAME="dvi2rgb_0_TMDS_Clk_n">
+        <PORT DIR="I" NAME="TMDS_Clk_n" SIGIS="clk" SIGNAME="dvi2rgb_0_TMDS_Clk_n">
           <CONNECTIONS>
             <CONNECTION INSTANCE="design_1_imp" PORT="hdmi_in_clk_n"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="TMDS_Clk_p" SIGIS="clk" SIGNAME="dvi2rgb_0_TMDS_Clk_p">
+        <PORT DIR="I" NAME="TMDS_Clk_p" SIGIS="clk" SIGNAME="dvi2rgb_0_TMDS_Clk_p">
           <CONNECTIONS>
             <CONNECTION INSTANCE="design_1_imp" PORT="hdmi_in_clk_p"/>
           </CONNECTIONS>
@@ -944,7 +943,6 @@
         </PORT>
         <PORT DIR="O" NAME="aPixelClkLckd" SIGIS="undef"/>
         <PORT DIR="I" NAME="aRst" SIGIS="undef"/>
-        <PORT DIR="O" NAME="pLocked" SIGIS="undef"/>
         <PORT DIR="I" NAME="pRst" SIGIS="undef"/>
         <PORT DIR="O" LEFT="23" NAME="vid_pData" RIGHT="0" SIGIS="undef" SIGNAME="dvi2rgb_0_vid_pData">
           <CONNECTIONS>
@@ -976,22 +974,22 @@
             <PORTMAP LOGICAL="DATA_P" PHYSICAL="TMDS_Data_p"/>
           </PORTMAPS>
         </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="dvi2rgb_0_DDC" NAME="DDC" TYPE="INITIATOR" VLNV="xilinx.com:interface:iic:1.0">
+          <PORTMAPS>
+            <PORTMAP LOGICAL="SCL_I" PHYSICAL="DDC_SCL_I"/>
+            <PORTMAP LOGICAL="SCL_O" PHYSICAL="DDC_SCL_O"/>
+            <PORTMAP LOGICAL="SCL_T" PHYSICAL="DDC_SCL_T"/>
+            <PORTMAP LOGICAL="SDA_I" PHYSICAL="DDC_SDA_I"/>
+            <PORTMAP LOGICAL="SDA_O" PHYSICAL="DDC_SDA_O"/>
+            <PORTMAP LOGICAL="SDA_T" PHYSICAL="DDC_SDA_T"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
         <BUSINTERFACE BUSNAME="dvi2rgb_0_RGB" NAME="RGB" TYPE="INITIATOR" VLNV="xilinx.com:interface:vid_io:1.0">
           <PORTMAPS>
             <PORTMAP LOGICAL="ACTIVE_VIDEO" PHYSICAL="vid_pVDE"/>
             <PORTMAP LOGICAL="DATA" PHYSICAL="vid_pData"/>
             <PORTMAP LOGICAL="HSYNC" PHYSICAL="vid_pHSync"/>
             <PORTMAP LOGICAL="VSYNC" PHYSICAL="vid_pVSync"/>
-          </PORTMAPS>
-        </BUSINTERFACE>
-        <BUSINTERFACE BUSNAME="dvi2rgb_0_DDC" NAME="DDC" TYPE="INITIATOR" VLNV="xilinx.com:interface:iic:1.0">
-          <PORTMAPS>
-            <PORTMAP LOGICAL="SCL_I" PHYSICAL="SCL_I"/>
-            <PORTMAP LOGICAL="SCL_O" PHYSICAL="SCL_O"/>
-            <PORTMAP LOGICAL="SCL_T" PHYSICAL="SCL_T"/>
-            <PORTMAP LOGICAL="SDA_I" PHYSICAL="SDA_I"/>
-            <PORTMAP LOGICAL="SDA_O" PHYSICAL="SDA_O"/>
-            <PORTMAP LOGICAL="SDA_T" PHYSICAL="SDA_T"/>
           </PORTMAPS>
         </BUSINTERFACE>
       </BUSINTERFACES>
@@ -1001,7 +999,7 @@
       <PARAMETERS>
         <PARAMETER NAME="CONST_VAL" VALUE="0x1"/>
         <PARAMETER NAME="CONST_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="Component_Name" VALUE="design_1_xlconstant_0_0"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_xlconstant_0_1"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
@@ -2042,8 +2040,8 @@
         </PORT>
         <PORT CLKFREQUENCY="100000000" DIR="O" NAME="FCLK_CLK0" SIGIS="clk" SIGNAME="processing_system7_0_FCLK_CLK0">
           <CONNECTIONS>
-            <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_in1"/>
             <CONNECTION INSTANCE="processing_system7_0" PORT="M_AXI_GP0_ACLK"/>
+            <CONNECTION INSTANCE="clk_wiz_0" PORT="clk_in1"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="FCLK_RESET0_N" POLARITY="ACTIVE_LOW" SIGIS="rst"/>
@@ -2243,17 +2241,13 @@
       <MEMORYMAP/>
       <PERIPHERALS/>
     </MODULE>
-    <MODULE COREREVISION="8" FULLNAME="/rgb2dvi_0" HWVERSION="1.4" INSTANCE="rgb2dvi_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="rgb2dvi" VLNV="digilentinc.com:ip:rgb2dvi:1.4">
+    <MODULE COREREVISION="7" FULLNAME="/rgb2dvi_0" HWVERSION="1.2" INSTANCE="rgb2dvi_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="rgb2dvi" VLNV="digilentinc.com:ip:rgb2dvi:1.2">
       <DOCUMENTS>
-        <DOCUMENT SOURCE="e:/workspace/IntelliJ/hdmi_sender/vivado-library/ip/rgb2dvi/docs/rgb2dvi.pdf"/>
+        <DOCUMENT SOURCE="e:/workspace/IntelliJ/hdmi_sender/vivado-library/ip/rgb2dvi_v1_2/docs/rgb2dvi_v1_2.pdf"/>
       </DOCUMENTS>
       <PARAMETERS>
-        <PARAMETER NAME="kClkPrimitive" VALUE="PLL"/>
+        <PARAMETER NAME="kClkPrimitive" VALUE="MMCM"/>
         <PARAMETER NAME="kClkRange" VALUE="2"/>
-        <PARAMETER NAME="kClkSwap" VALUE="false"/>
-        <PARAMETER NAME="kD0Swap" VALUE="false"/>
-        <PARAMETER NAME="kD1Swap" VALUE="false"/>
-        <PARAMETER NAME="kD2Swap" VALUE="false"/>
         <PARAMETER NAME="kGenerateSerialClk" VALUE="true"/>
         <PARAMETER NAME="kRstActiveHigh" VALUE="true"/>
         <PARAMETER NAME="Component_Name" VALUE="design_1_rgb2dvi_0_0"/>
@@ -2266,12 +2260,12 @@
             <CONNECTION INSTANCE="dvi2rgb_0" PORT="PixelClk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="100000000" DIR="O" NAME="TMDS_Clk_n" SIGIS="clk" SIGNAME="rgb2dvi_0_TMDS_Clk_n">
+        <PORT DIR="O" NAME="TMDS_Clk_n" SIGIS="clk" SIGNAME="rgb2dvi_0_TMDS_Clk_n">
           <CONNECTIONS>
             <CONNECTION INSTANCE="design_1_imp" PORT="hdmi_out_clk_n"/>
           </CONNECTIONS>
         </PORT>
-        <PORT CLKFREQUENCY="100000000" DIR="O" NAME="TMDS_Clk_p" SIGIS="clk" SIGNAME="rgb2dvi_0_TMDS_Clk_p">
+        <PORT DIR="O" NAME="TMDS_Clk_p" SIGIS="clk" SIGNAME="rgb2dvi_0_TMDS_Clk_p">
           <CONNECTIONS>
             <CONNECTION INSTANCE="design_1_imp" PORT="hdmi_out_clk_p"/>
           </CONNECTIONS>
@@ -2541,18 +2535,18 @@
         <PARAMETER NAME="C_GEN_AVIDEO_EN" VALUE="1"/>
         <PARAMETER NAME="C_GEN_AVIDEO_POLARITY" VALUE="1"/>
         <PARAMETER NAME="C_GEN_CPARITY" VALUE="0"/>
-        <PARAMETER NAME="C_GEN_F0_VBLANK_HEND" VALUE="1390"/>
-        <PARAMETER NAME="C_GEN_F0_VBLANK_HSTART" VALUE="1390"/>
+        <PARAMETER NAME="C_GEN_F0_VBLANK_HEND" VALUE="1280"/>
+        <PARAMETER NAME="C_GEN_F0_VBLANK_HSTART" VALUE="1280"/>
         <PARAMETER NAME="C_GEN_F0_VFRAME_SIZE" VALUE="750"/>
-        <PARAMETER NAME="C_GEN_F0_VSYNC_HEND" VALUE="1390"/>
-        <PARAMETER NAME="C_GEN_F0_VSYNC_HSTART" VALUE="1390"/>
+        <PARAMETER NAME="C_GEN_F0_VSYNC_HEND" VALUE="1280"/>
+        <PARAMETER NAME="C_GEN_F0_VSYNC_HSTART" VALUE="1280"/>
         <PARAMETER NAME="C_GEN_F0_VSYNC_VEND" VALUE="729"/>
         <PARAMETER NAME="C_GEN_F0_VSYNC_VSTART" VALUE="724"/>
-        <PARAMETER NAME="C_GEN_F1_VBLANK_HEND" VALUE="1390"/>
-        <PARAMETER NAME="C_GEN_F1_VBLANK_HSTART" VALUE="1390"/>
+        <PARAMETER NAME="C_GEN_F1_VBLANK_HEND" VALUE="1280"/>
+        <PARAMETER NAME="C_GEN_F1_VBLANK_HSTART" VALUE="1280"/>
         <PARAMETER NAME="C_GEN_F1_VFRAME_SIZE" VALUE="750"/>
-        <PARAMETER NAME="C_GEN_F1_VSYNC_HEND" VALUE="1390"/>
-        <PARAMETER NAME="C_GEN_F1_VSYNC_HSTART" VALUE="1390"/>
+        <PARAMETER NAME="C_GEN_F1_VSYNC_HEND" VALUE="1280"/>
+        <PARAMETER NAME="C_GEN_F1_VSYNC_HSTART" VALUE="1280"/>
         <PARAMETER NAME="C_GEN_F1_VSYNC_VEND" VALUE="729"/>
         <PARAMETER NAME="C_GEN_F1_VSYNC_VSTART" VALUE="724"/>
         <PARAMETER NAME="C_GEN_FIELDID_EN" VALUE="0"/>
@@ -2619,18 +2613,18 @@
         <PARAMETER NAME="GEN_ACHROMA_POLARITY" VALUE="High"/>
         <PARAMETER NAME="GEN_AVIDEO_POLARITY" VALUE="High"/>
         <PARAMETER NAME="GEN_CPARITY" VALUE="0"/>
-        <PARAMETER NAME="GEN_F0_VBLANK_HEND" VALUE="1390"/>
-        <PARAMETER NAME="GEN_F0_VBLANK_HSTART" VALUE="1390"/>
+        <PARAMETER NAME="GEN_F0_VBLANK_HEND" VALUE="640"/>
+        <PARAMETER NAME="GEN_F0_VBLANK_HSTART" VALUE="640"/>
         <PARAMETER NAME="GEN_F0_VFRAME_SIZE" VALUE="750"/>
-        <PARAMETER NAME="GEN_F0_VSYNC_HEND" VALUE="1390"/>
-        <PARAMETER NAME="GEN_F0_VSYNC_HSTART" VALUE="1390"/>
+        <PARAMETER NAME="GEN_F0_VSYNC_HEND" VALUE="695"/>
+        <PARAMETER NAME="GEN_F0_VSYNC_HSTART" VALUE="640"/>
         <PARAMETER NAME="GEN_F0_VSYNC_VEND" VALUE="729"/>
         <PARAMETER NAME="GEN_F0_VSYNC_VSTART" VALUE="724"/>
-        <PARAMETER NAME="GEN_F1_VBLANK_HEND" VALUE="1390"/>
-        <PARAMETER NAME="GEN_F1_VBLANK_HSTART" VALUE="1390"/>
+        <PARAMETER NAME="GEN_F1_VBLANK_HEND" VALUE="640"/>
+        <PARAMETER NAME="GEN_F1_VBLANK_HSTART" VALUE="640"/>
         <PARAMETER NAME="GEN_F1_VFRAME_SIZE" VALUE="750"/>
-        <PARAMETER NAME="GEN_F1_VSYNC_HEND" VALUE="1390"/>
-        <PARAMETER NAME="GEN_F1_VSYNC_HSTART" VALUE="1390"/>
+        <PARAMETER NAME="GEN_F1_VSYNC_HEND" VALUE="695"/>
+        <PARAMETER NAME="GEN_F1_VSYNC_HSTART" VALUE="695"/>
         <PARAMETER NAME="GEN_F1_VSYNC_VEND" VALUE="729"/>
         <PARAMETER NAME="GEN_F1_VSYNC_VSTART" VALUE="724"/>
         <PARAMETER NAME="GEN_FIELDID_EN" VALUE="false"/>
@@ -2914,7 +2908,7 @@
       <PARAMETERS>
         <PARAMETER NAME="CONST_VAL" VALUE="0x0"/>
         <PARAMETER NAME="CONST_WIDTH" VALUE="1"/>
-        <PARAMETER NAME="Component_Name" VALUE="design_1_xlconstant_1_0"/>
+        <PARAMETER NAME="Component_Name" VALUE="design_1_xlconstant_0_0"/>
         <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
       </PARAMETERS>
       <PORTS>
