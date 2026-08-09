@@ -3,13 +3,14 @@
 
 #include "define.h"
 
-void pattern_sender (int frame, hls::stream<pixel_t> &pout)
+void pattern_sender (int frame, hls::stream<pixel_t> &pin, hls::stream<pixel_t> &pout)
 {
 #pragma HLS INTERFACE s_axilite port=return bundle=ctrl
 #pragma HLS INTERFACE s_axilite port=frame bundle=ctrl
+#pragma HLS INTERFACE axis port=pin
 #pragma HLS INTERFACE axis port=pout
 
-    pixel_t p;
+    pixel_t p, ptmp;
     p.data = 0;
     p.keep = p.strb = 0x7;
     p.user = p.last = p.id = p.dest = 0;
@@ -18,15 +19,20 @@ void pattern_sender (int frame, hls::stream<pixel_t> &pout)
     const ap_uint<8> zero = 0x00;
     
     col_y = (frame >> 1) & 0xff;
-    for (int y = 0; y < 320; y++) {
+    for (int y = 0; y < 480; y++) {
         col_x = frame & 0x1ff;
-        for (int x = 0; x < 400; x++) {
+        for (int x = 0; x < 640; x++) {
 #pragma HLS PIPELINE
-            p.data.range(23, 16) = (col_x[8]) ? col_y : zero;
-            p.data.range(15,  8) = (col_x[6]) ? col_y : zero;
-            p.data.range( 7,  0) = (col_x[7]) ? col_y : zero;
+            pin >> ptmp;
+            if (160 <= x && x < 480 && 160 <= y && y < 320) {
+                p.data.range(23, 16) = (col_x[8]) ? col_y : zero;
+                p.data.range(15,  8) = (col_x[6]) ? col_y : zero;
+                p.data.range( 7,  0) = (col_x[7]) ? col_y : zero;
+            } else {
+                p.data = ptmp.data;
+            }
             p.user[0] = (x == 0 && y == 0);
-            p.last    = (x == 399);
+            p.last    = (x == 639);
             pout << p;
             col_x++;
         }

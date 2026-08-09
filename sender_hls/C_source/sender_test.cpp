@@ -20,7 +20,7 @@ int main ()
     hls::stream<pixel_t> pdata;
     unsigned int checksum;
     for (int i = 0; i < 30; i += 10) {
-        pattern_sender(i, pdata);
+        pattern_sender(i, pdata, pdata);
         checksum = pattern_checksum(pdata);
         printf("frame %2d: checksum = %08x\n", i, checksum);
     }
