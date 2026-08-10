@@ -10,17 +10,12 @@ def initial_fbuf ():
         for x in range(32):
             base[y + 24][x][0] = 0x80
             base[y][x + 32][0] = 0xc0
-    return np.tile(base, (15, 20, 3))
+    return np.tile(base, (10, 10, 3))
 
 def video_initialize (vdma):
     # video width and height
-    VWIDTH = 1280
-    VHEIGHT = 720
-    # pattern shape
-    PWIDTH = 800
-    PHEIGHT = 480
-    PLEFT = (VWIDTH - PWIDTH) // 2
-    PTOP = (VHEIGHT - PHEIGHT) // 2
+    VWIDTH = 640
+    VHEIGHT =480
     
     # frame buffers
     fbuf0 = allocate(shape=(VHEIGHT, VWIDTH, 3), dtype=np.uint8)
@@ -34,12 +29,12 @@ def video_initialize (vdma):
     # initialize VDMA
     vdma = pl.axi_vdma_0
     vdma.write(0x30, 0x8b) # pattern write
-    vdma.write(0xac, fbuf0.device_address + (PTOP * VWIDTH + PLEFT) * 3)
-    vdma.write(0xb0, fbuf1.device_address + (PTOP * VWIDTH + PLEFT) * 3)
-    vdma.write(0xb4, fbuf2.device_address + (PTOP * VWIDTH + PLEFT) * 3)
+    vdma.write(0xac, fbuf0.device_address)
+    vdma.write(0xb0, fbuf1.device_address)
+    vdma.write(0xb4, fbuf2.device_address)
     vdma.write(0xa8, VWIDTH * 3)
-    vdma.write(0xa4, PWIDTH * 3)
-    vdma.write(0xa0, PHEIGHT)
+    vdma.write(0xa4, VWIDTH * 3)
+    vdma.write(0xa0, VHEIGHT)
     vdma.write(0x00, 0x8b) # video read
     vdma.write(0x5c, fbuf0.device_address)
     vdma.write(0x60, fbuf1.device_address)
