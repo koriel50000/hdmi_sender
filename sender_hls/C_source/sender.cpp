@@ -30,9 +30,9 @@ void pattern_sender (hls::stream<pixel_t> &pin, hls::stream<pixel_t> &pout)
                 p.data.range( 7,  0) = (n == 3) ? full : zero; // G
             } else {
                 ap_uint<24> d = ptmp.data;
-                p.data.range(23, 16) = d.range( 7,  0); // G
-                p.data.range(15,  8) = d.range(23, 16); // R
-                p.data.range( 7,  0) = d.range(15,  8); // B
+                p.data.range(23, 16) = d.range(23, 16); // R
+                p.data.range(15,  8) = d.range( 7,  0); // B
+                p.data.range( 7,  0) = d.range(15,  8); // G
             }
             p.user[0] = (x == 0 && y == 0);
             p.last    = (x == 1279);
