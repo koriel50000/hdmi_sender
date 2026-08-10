@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0xA52F87A2EC8D8CE5",
+      "boundary_crc": "0x3BE43F439810F3F9",
       "device": "xc7z020clg400-1",
       "gen_directory": "../../../../hdmi_sender.gen/sources_1/bd/design_1",
       "name": "design_1",
@@ -34,7 +34,8 @@
       "dvi2rgb_0": "",
       "v_vid_in_axi4s_0": "",
       "clk_wiz_1": "",
-      "pattern_sender_0": ""
+      "pattern_sender_0": "",
+      "one": ""
     },
     "interface_ports": {
       "DDR": {
@@ -319,6 +320,13 @@
             "direction": "O"
           }
         }
+      }
+    },
+    "ports": {
+      "hdmi_in_hpd": {
+        "direction": "O",
+        "left": "0",
+        "right": "0"
       }
     },
     "components": {
@@ -3033,6 +3041,14 @@
         "xci_path": "ip\\design_1_pattern_sender_0_2\\design_1_pattern_sender_0_2.xci",
         "inst_hier_path": "pattern_sender_0",
         "has_run_ip_tcl": "true"
+      },
+      "one": {
+        "vlnv": "xilinx.com:ip:xlconstant:1.1",
+        "ip_revision": "10",
+        "xci_name": "design_1_xlconstant_0_0",
+        "xci_path": "ip\\design_1_xlconstant_0_0\\design_1_xlconstant_0_0.xci",
+        "inst_hier_path": "one",
+        "has_run_ip_tcl": "true"
       }
     },
     "interface_nets": {
@@ -3203,6 +3219,12 @@
         "ports": [
           "dvi2rgb_0/PixelClk",
           "v_vid_in_axi4s_0/vid_io_in_clk"
+        ]
+      },
+      "one_dout": {
+        "ports": [
+          "one/dout",
+          "hdmi_in_hpd"
         ]
       },
       "processing_system7_0_FCLK_CLK0": {
