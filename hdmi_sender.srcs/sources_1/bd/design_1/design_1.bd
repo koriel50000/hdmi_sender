@@ -3047,9 +3047,9 @@
       },
       "pattern_sender_0": {
         "vlnv": "xilinx.com:hls:pattern_sender:1.0",
-        "ip_revision": "2114736386",
-        "xci_name": "design_1_pattern_sender_0_10",
-        "xci_path": "ip\\design_1_pattern_sender_0_10\\design_1_pattern_sender_0_10.xci",
+        "ip_revision": "2114736401",
+        "xci_name": "design_1_pattern_sender_0_11",
+        "xci_path": "ip\\design_1_pattern_sender_0_11\\design_1_pattern_sender_0_11.xci",
         "inst_hier_path": "pattern_sender_0",
         "has_run_ip_tcl": "true"
       }
@@ -3159,8 +3159,8 @@
       },
       "v_vid_in_axi4s_0_video_out": {
         "interface_ports": [
-          "v_vid_in_axi4s_0/video_out",
-          "pattern_sender_0/pin"
+          "pattern_sender_0/pin",
+          "v_vid_in_axi4s_0/video_out"
         ]
       }
     },
