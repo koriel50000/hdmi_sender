@@ -29,10 +29,7 @@ void pattern_sender (hls::stream<pixel_t> &pin, hls::stream<pixel_t> &pout)
                 p.data.range(15,  8) = (col_x[6]) ? col_y : zero;
                 p.data.range( 7,  0) = (col_x[7]) ? col_y : zero;
             } else {
-                ap_uint<24> d = ptmp.data;
-                p.data.range(23, 16) = d.range( 7,  0); // R
-                p.data.range(15,  8) = d.range(15,  8); // G
-                p.data.range( 7,  0) = d.range(23, 16); // B
+                p.data = ptmp.data;
             }
             p.user[0] = (x == 0 && y == 0);
             p.last    = (x == 1279);
