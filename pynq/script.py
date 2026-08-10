@@ -70,10 +70,10 @@ import time
 import math
 
 pl = Overlay("design_1.bit")
-#sender = pl.pattern_sender_0
-#vdma = pl.axi_vdma_0
+sender = pl.pattern_sender_0
+vdma = pl.axi_vdma_0
 
-#fbuf0, fbuf1, fbuf2 = video_initialize(vdma)
+fbuf0, fbuf1, fbuf2 = video_initialize(vdma)
 start_time = current_time = time.time()
 current_frame = -1
 frame_processed = 0
@@ -86,10 +86,10 @@ while current_time - start_time < 20:
     current_frame = frame
     frame_processed += 1
     
-    #sender.register_map.frame = current_frame
-    #sender.register_map.CTRL.AP_START = 1
-    #while sender.register_map.CTRL.AP_DONE == 0:
-    #    pass
+    sender.register_map.frame = current_frame
+    sender.register_map.CTRL.AP_START = 1
+    while sender.register_map.CTRL.AP_DONE == 0:
+        pass
 
-#video_finalize(vdma, fbuf0, fbuf1, fbuf2)
+video_finalize(vdma, fbuf0, fbuf1, fbuf2)
 frame_processed
