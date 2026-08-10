@@ -71,7 +71,7 @@ vdma = pl.axi_vdma_0
 fbuf0, fbuf1, fbuf2 = video_initialize(vdma)
 start_time = current_time = time.time()
 
-while current_time - start_time < 20:
+while current_time - start_time < 30:
     current_time = time.time()
     
     sender.register_map.CTRL.AP_START = 1
