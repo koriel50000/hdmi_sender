@@ -3047,9 +3047,9 @@
       },
       "pattern_sender_0": {
         "vlnv": "xilinx.com:hls:pattern_sender:1.0",
-        "ip_revision": "2114735642",
-        "xci_name": "design_1_pattern_sender_0_5",
-        "xci_path": "ip\\design_1_pattern_sender_0_5\\design_1_pattern_sender_0_5.xci",
+        "ip_revision": "2114735671",
+        "xci_name": "design_1_pattern_sender_0_6",
+        "xci_path": "ip\\design_1_pattern_sender_0_6\\design_1_pattern_sender_0_6.xci",
         "inst_hier_path": "pattern_sender_0",
         "has_run_ip_tcl": "true"
       }
