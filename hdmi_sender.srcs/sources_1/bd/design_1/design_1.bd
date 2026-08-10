@@ -2995,7 +2995,7 @@
         "has_run_ip_tcl": "true",
         "parameters": {
           "kAddBUFG": {
-            "value": "true"
+            "value": "false"
           },
           "kEdidFileName": {
             "value": "720p_edid.data"
