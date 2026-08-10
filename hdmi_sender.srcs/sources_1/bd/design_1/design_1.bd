@@ -31,12 +31,10 @@
       "v_tc_0": "",
       "xlconcat_0": "",
       "axi_intc_0": "",
-      "pattern_sender_0": "",
       "dvi2rgb_0": "",
       "v_vid_in_axi4s_0": "",
       "clk_wiz_1": "",
-      "v_tc_1": "",
-      "proc_sys_reset_0": ""
+      "pattern_sender_0": ""
     },
     "interface_ports": {
       "DDR": {
@@ -2977,14 +2975,6 @@
           }
         }
       },
-      "pattern_sender_0": {
-        "vlnv": "xilinx.com:hls:pattern_sender:1.0",
-        "ip_revision": "2114735237",
-        "xci_name": "design_1_pattern_sender_0_2",
-        "xci_path": "ip\\design_1_pattern_sender_0_2\\design_1_pattern_sender_0_2.xci",
-        "inst_hier_path": "pattern_sender_0",
-        "has_run_ip_tcl": "true"
-      },
       "dvi2rgb_0": {
         "vlnv": "digilentinc.com:ip:dvi2rgb:1.7",
         "ip_revision": "3",
@@ -2993,6 +2983,9 @@
         "inst_hier_path": "dvi2rgb_0",
         "has_run_ip_tcl": "true",
         "parameters": {
+          "kAddBUFG": {
+            "value": "true"
+          },
           "kEdidFileName": {
             "value": "720p_edid.data"
           },
@@ -3033,28 +3026,12 @@
           }
         }
       },
-      "v_tc_1": {
-        "vlnv": "xilinx.com:ip:v_tc:6.2",
-        "ip_revision": "11",
-        "xci_name": "design_1_v_tc_0_1",
-        "xci_path": "ip\\design_1_v_tc_0_1\\design_1_v_tc_0_1.xci",
-        "inst_hier_path": "v_tc_1",
-        "has_run_ip_tcl": "true",
-        "parameters": {
-          "HAS_AXI4_LITE": {
-            "value": "false"
-          },
-          "enable_generation": {
-            "value": "false"
-          }
-        }
-      },
-      "proc_sys_reset_0": {
-        "vlnv": "xilinx.com:ip:proc_sys_reset:5.0",
-        "ip_revision": "17",
-        "xci_name": "design_1_proc_sys_reset_0_0",
-        "xci_path": "ip\\design_1_proc_sys_reset_0_0\\design_1_proc_sys_reset_0_0.xci",
-        "inst_hier_path": "proc_sys_reset_0",
+      "pattern_sender_0": {
+        "vlnv": "xilinx.com:hls:pattern_sender:1.0",
+        "ip_revision": "2114735237",
+        "xci_name": "design_1_pattern_sender_0_2",
+        "xci_path": "ip\\design_1_pattern_sender_0_2\\design_1_pattern_sender_0_2.xci",
+        "inst_hier_path": "pattern_sender_0",
         "has_run_ip_tcl": "true"
       }
     },
@@ -3166,12 +3143,6 @@
           "v_vid_in_axi4s_0/video_out",
           "pattern_sender_0/pin"
         ]
-      },
-      "v_vid_in_axi4s_0_vtiming_out": {
-        "interface_ports": [
-          "v_tc_1/vtiming_in",
-          "v_vid_in_axi4s_0/vtiming_out"
-        ]
       }
     },
     "nets": {
@@ -3224,27 +3195,14 @@
       "clk_wiz_1_locked": {
         "ports": [
           "clk_wiz_1/locked",
-          "dvi2rgb_0/aRst_n"
+          "dvi2rgb_0/aRst_n",
+          "dvi2rgb_0/pRst_n"
         ]
       },
       "dvi2rgb_0_PixelClk": {
         "ports": [
           "dvi2rgb_0/PixelClk",
-          "v_vid_in_axi4s_0/vid_io_in_clk",
-          "v_tc_1/clk",
-          "proc_sys_reset_0/slowest_sync_clk"
-        ]
-      },
-      "proc_sys_reset_0_peripheral_aresetn": {
-        "ports": [
-          "proc_sys_reset_0/peripheral_aresetn",
-          "v_tc_1/resetn"
-        ]
-      },
-      "proc_sys_reset_0_peripheral_reset": {
-        "ports": [
-          "proc_sys_reset_0/peripheral_reset",
-          "v_vid_in_axi4s_0/vid_io_in_reset"
+          "v_vid_in_axi4s_0/vid_io_in_clk"
         ]
       },
       "processing_system7_0_FCLK_CLK0": {
@@ -3266,16 +3224,15 @@
           "axi_intc_0/s_axi_aclk",
           "axi_vdma_0/m_axis_mm2s_aclk",
           "axi_vdma_0/s_axis_s2mm_aclk",
-          "pattern_sender_0/ap_clk",
           "clk_wiz_1/clk_in1",
+          "pattern_sender_0/ap_clk",
           "v_vid_in_axi4s_0/aclk"
         ]
       },
       "processing_system7_0_FCLK_RESET0_N": {
         "ports": [
           "processing_system7_0/FCLK_RESET0_N",
-          "rst_ps7_0_100M/ext_reset_in",
-          "proc_sys_reset_0/ext_reset_in"
+          "rst_ps7_0_100M/ext_reset_in"
         ]
       },
       "rst_ps7_0_100M_peripheral_aresetn": {

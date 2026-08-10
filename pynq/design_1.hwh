@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Aug 10 14:24:17 2026" VIVADOVERSION="2025.2.1">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Mon Aug 10 15:53:23 2026" VIVADOVERSION="2025.2.1">
 
   <SYSTEMINFO ARCH="zynq" BOARD="www.digilentinc.com:pynq-z1:part0:1.0" DEVICE="7z020" NAME="design_1" PACKAGE="clg400" SPEEDGRADE="-1"/>
 
@@ -6795,6 +6795,7 @@
         <PORT DIR="O" NAME="locked" SIGIS="undef" SIGNAME="clk_wiz_1_locked">
           <CONNECTIONS>
             <CONNECTION INSTANCE="dvi2rgb_0" PORT="aRst_n"/>
+            <CONNECTION INSTANCE="dvi2rgb_0" PORT="pRst_n"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="reset" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="rst_ps7_0_100M_peripheral_reset">
@@ -6857,8 +6858,6 @@
         <PORT CLKFREQUENCY="100000000" DIR="O" NAME="PixelClk" SIGIS="clk" SIGNAME="dvi2rgb_0_PixelClk">
           <CONNECTIONS>
             <CONNECTION INSTANCE="v_vid_in_axi4s_0" PORT="vid_io_in_clk"/>
-            <CONNECTION INSTANCE="v_tc_1" PORT="clk"/>
-            <CONNECTION INSTANCE="proc_sys_reset_0" PORT="slowest_sync_clk"/>
           </CONNECTIONS>
         </PORT>
         <PORT CLKFREQUENCY="200000000" DIR="I" NAME="RefClk" SIGIS="clk" SIGNAME="clk_wiz_1_clk_out1">
@@ -6892,7 +6891,11 @@
             <CONNECTION INSTANCE="clk_wiz_1" PORT="locked"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="pRst_n" POLARITY="ACTIVE_LOW" SIGIS="rst"/>
+        <PORT DIR="I" NAME="pRst_n" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="clk_wiz_1_locked">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="clk_wiz_1" PORT="locked"/>
+          </CONNECTIONS>
+        </PORT>
         <PORT DIR="O" LEFT="23" NAME="vid_pData" RIGHT="0" SIGIS="undef" SIGNAME="dvi2rgb_0_vid_pData">
           <CONNECTIONS>
             <CONNECTION INSTANCE="v_vid_in_axi4s_0" PORT="vid_data"/>
@@ -7446,55 +7449,6 @@
           </PORTMAPS>
         </BUSINTERFACE>
       </BUSINTERFACES>
-    </MODULE>
-    <MODULE COREREVISION="17" FULLNAME="/proc_sys_reset_0" HWVERSION="5.0" INSTANCE="proc_sys_reset_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="proc_sys_reset" VLNV="xilinx.com:ip:proc_sys_reset:5.0">
-      <DOCUMENTS>
-        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=proc_sys_reset;v=v5_0;d=pg164-proc-sys-reset.pdf"/>
-      </DOCUMENTS>
-      <PARAMETERS>
-        <PARAMETER NAME="C_AUX_RESET_HIGH" VALUE="0"/>
-        <PARAMETER NAME="C_AUX_RST_WIDTH" VALUE="4"/>
-        <PARAMETER NAME="C_EXT_RESET_HIGH" VALUE="0"/>
-        <PARAMETER NAME="C_EXT_RST_WIDTH" VALUE="4"/>
-        <PARAMETER NAME="C_FAMILY" VALUE="zynq"/>
-        <PARAMETER NAME="C_NUM_BUS_RST" VALUE="1"/>
-        <PARAMETER NAME="C_NUM_INTERCONNECT_ARESETN" VALUE="1"/>
-        <PARAMETER NAME="C_NUM_PERP_ARESETN" VALUE="1"/>
-        <PARAMETER NAME="C_NUM_PERP_RST" VALUE="1"/>
-        <PARAMETER NAME="Component_Name" VALUE="design_1_proc_sys_reset_0_0"/>
-        <PARAMETER NAME="RESET_BOARD_INTERFACE" VALUE="Custom"/>
-        <PARAMETER NAME="USE_BOARD_FLOW" VALUE="false"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="I" NAME="aux_reset_in" POLARITY="ACTIVE_LOW" SIGIS="rst"/>
-        <PORT DIR="O" LEFT="0" NAME="bus_struct_reset" POLARITY="ACTIVE_HIGH" RIGHT="0" SIGIS="rst"/>
-        <PORT DIR="I" NAME="dcm_locked" SIGIS="undef"/>
-        <PORT DIR="I" NAME="ext_reset_in" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="processing_system7_0_FCLK_RESET0_N">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="processing_system7_0" PORT="FCLK_RESET0_N"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="0" NAME="interconnect_aresetn" POLARITY="ACTIVE_LOW" RIGHT="0" SIGIS="rst"/>
-        <PORT DIR="I" NAME="mb_debug_sys_rst" POLARITY="ACTIVE_HIGH" SIGIS="rst"/>
-        <PORT DIR="O" NAME="mb_reset" POLARITY="ACTIVE_HIGH" SIGIS="rst"/>
-        <PORT DIR="O" LEFT="0" NAME="peripheral_aresetn" POLARITY="ACTIVE_LOW" RIGHT="0" SIGIS="rst" SIGNAME="proc_sys_reset_0_peripheral_aresetn">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="v_tc_1" PORT="resetn"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="0" NAME="peripheral_reset" POLARITY="ACTIVE_HIGH" RIGHT="0" SIGIS="rst" SIGNAME="proc_sys_reset_0_peripheral_reset">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="v_vid_in_axi4s_0" PORT="vid_io_in_reset"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="slowest_sync_clk" SIGIS="clk" SIGNAME="dvi2rgb_0_PixelClk">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="dvi2rgb_0" PORT="PixelClk"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES/>
     </MODULE>
     <MODULE CONFIGURABLE="TRUE" COREREVISION="8" FULLNAME="/processing_system7_0" HWVERSION="5.5" INSTANCE="processing_system7_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" IS_PL="FALSE" MODTYPE="processing_system7" VLNV="xilinx.com:ip:processing_system7:5.5">
       <DOCUMENTS>
@@ -8546,15 +8500,14 @@
             <CONNECTION INSTANCE="axi_intc_0" PORT="s_axi_aclk"/>
             <CONNECTION INSTANCE="axi_vdma_0" PORT="m_axis_mm2s_aclk"/>
             <CONNECTION INSTANCE="axi_vdma_0" PORT="s_axis_s2mm_aclk"/>
-            <CONNECTION INSTANCE="pattern_sender_0" PORT="ap_clk"/>
             <CONNECTION INSTANCE="clk_wiz_1" PORT="clk_in1"/>
+            <CONNECTION INSTANCE="pattern_sender_0" PORT="ap_clk"/>
             <CONNECTION INSTANCE="v_vid_in_axi4s_0" PORT="aclk"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="FCLK_RESET0_N" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="processing_system7_0_FCLK_RESET0_N">
           <CONNECTIONS>
             <CONNECTION INSTANCE="rst_ps7_0_100M" PORT="ext_reset_in"/>
-            <CONNECTION INSTANCE="proc_sys_reset_0" PORT="ext_reset_in"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" LEFT="0" NAME="IRQ_F2P" RIGHT="0" SENSITIVITY="LEVEL_HIGH" SIGIS="INTERRUPT" SIGNAME="axi_intc_0_irq">
@@ -9765,243 +9718,6 @@
         </BUSINTERFACE>
       </BUSINTERFACES>
     </MODULE>
-    <MODULE COREREVISION="11" FULLNAME="/v_tc_1" HWVERSION="6.2" INSTANCE="v_tc_1" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="v_tc" VLNV="xilinx.com:ip:v_tc:6.2">
-      <DOCUMENTS>
-        <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=v_tc;v=v6_2;d=pg016_v_tc.pdf"/>
-      </DOCUMENTS>
-      <PARAMETERS>
-        <PARAMETER NAME="C_ARBITRARY_RES_EN" VALUE="0"/>
-        <PARAMETER NAME="C_DETECT_EN" VALUE="1"/>
-        <PARAMETER NAME="C_DET_ACHROMA_EN" VALUE="0"/>
-        <PARAMETER NAME="C_DET_AVIDEO_EN" VALUE="1"/>
-        <PARAMETER NAME="C_DET_FIELDID_EN" VALUE="0"/>
-        <PARAMETER NAME="C_DET_HBLANK_EN" VALUE="1"/>
-        <PARAMETER NAME="C_DET_HSYNC_EN" VALUE="1"/>
-        <PARAMETER NAME="C_DET_VBLANK_EN" VALUE="1"/>
-        <PARAMETER NAME="C_DET_VSYNC_EN" VALUE="1"/>
-        <PARAMETER NAME="C_FSYNC_HSTART0" VALUE="0"/>
-        <PARAMETER NAME="C_FSYNC_HSTART1" VALUE="0"/>
-        <PARAMETER NAME="C_FSYNC_HSTART2" VALUE="0"/>
-        <PARAMETER NAME="C_FSYNC_HSTART3" VALUE="0"/>
-        <PARAMETER NAME="C_FSYNC_HSTART4" VALUE="0"/>
-        <PARAMETER NAME="C_FSYNC_HSTART5" VALUE="0"/>
-        <PARAMETER NAME="C_FSYNC_HSTART6" VALUE="0"/>
-        <PARAMETER NAME="C_FSYNC_HSTART7" VALUE="0"/>
-        <PARAMETER NAME="C_FSYNC_HSTART8" VALUE="0"/>
-        <PARAMETER NAME="C_FSYNC_HSTART9" VALUE="0"/>
-        <PARAMETER NAME="C_FSYNC_HSTART10" VALUE="0"/>
-        <PARAMETER NAME="C_FSYNC_HSTART11" VALUE="0"/>
-        <PARAMETER NAME="C_FSYNC_HSTART12" VALUE="0"/>
-        <PARAMETER NAME="C_FSYNC_HSTART13" VALUE="0"/>
-        <PARAMETER NAME="C_FSYNC_HSTART14" VALUE="0"/>
-        <PARAMETER NAME="C_FSYNC_HSTART15" VALUE="0"/>
-        <PARAMETER NAME="C_FSYNC_VSTART0" VALUE="0"/>
-        <PARAMETER NAME="C_FSYNC_VSTART1" VALUE="0"/>
-        <PARAMETER NAME="C_FSYNC_VSTART2" VALUE="0"/>
-        <PARAMETER NAME="C_FSYNC_VSTART3" VALUE="0"/>
-        <PARAMETER NAME="C_FSYNC_VSTART4" VALUE="0"/>
-        <PARAMETER NAME="C_FSYNC_VSTART5" VALUE="0"/>
-        <PARAMETER NAME="C_FSYNC_VSTART6" VALUE="0"/>
-        <PARAMETER NAME="C_FSYNC_VSTART7" VALUE="0"/>
-        <PARAMETER NAME="C_FSYNC_VSTART8" VALUE="0"/>
-        <PARAMETER NAME="C_FSYNC_VSTART9" VALUE="0"/>
-        <PARAMETER NAME="C_FSYNC_VSTART10" VALUE="0"/>
-        <PARAMETER NAME="C_FSYNC_VSTART11" VALUE="0"/>
-        <PARAMETER NAME="C_FSYNC_VSTART12" VALUE="0"/>
-        <PARAMETER NAME="C_FSYNC_VSTART13" VALUE="0"/>
-        <PARAMETER NAME="C_FSYNC_VSTART14" VALUE="0"/>
-        <PARAMETER NAME="C_FSYNC_VSTART15" VALUE="0"/>
-        <PARAMETER NAME="C_GENERATE_EN" VALUE="0"/>
-        <PARAMETER NAME="C_GEN_ACHROMA_EN" VALUE="0"/>
-        <PARAMETER NAME="C_GEN_ACHROMA_POLARITY" VALUE="1"/>
-        <PARAMETER NAME="C_GEN_AUTO_SWITCH" VALUE="0"/>
-        <PARAMETER NAME="C_GEN_AVIDEO_EN" VALUE="1"/>
-        <PARAMETER NAME="C_GEN_AVIDEO_POLARITY" VALUE="1"/>
-        <PARAMETER NAME="C_GEN_CPARITY" VALUE="0"/>
-        <PARAMETER NAME="C_GEN_F0_VBLANK_HEND" VALUE="1280"/>
-        <PARAMETER NAME="C_GEN_F0_VBLANK_HSTART" VALUE="1280"/>
-        <PARAMETER NAME="C_GEN_F0_VFRAME_SIZE" VALUE="750"/>
-        <PARAMETER NAME="C_GEN_F0_VSYNC_HEND" VALUE="1280"/>
-        <PARAMETER NAME="C_GEN_F0_VSYNC_HSTART" VALUE="1280"/>
-        <PARAMETER NAME="C_GEN_F0_VSYNC_VEND" VALUE="729"/>
-        <PARAMETER NAME="C_GEN_F0_VSYNC_VSTART" VALUE="724"/>
-        <PARAMETER NAME="C_GEN_F1_VBLANK_HEND" VALUE="1390"/>
-        <PARAMETER NAME="C_GEN_F1_VBLANK_HSTART" VALUE="1390"/>
-        <PARAMETER NAME="C_GEN_F1_VFRAME_SIZE" VALUE="750"/>
-        <PARAMETER NAME="C_GEN_F1_VSYNC_HEND" VALUE="1390"/>
-        <PARAMETER NAME="C_GEN_F1_VSYNC_HSTART" VALUE="1390"/>
-        <PARAMETER NAME="C_GEN_F1_VSYNC_VEND" VALUE="729"/>
-        <PARAMETER NAME="C_GEN_F1_VSYNC_VSTART" VALUE="724"/>
-        <PARAMETER NAME="C_GEN_FIELDID_EN" VALUE="0"/>
-        <PARAMETER NAME="C_GEN_FIELDID_POLARITY" VALUE="1"/>
-        <PARAMETER NAME="C_GEN_HACTIVE_SIZE" VALUE="1280"/>
-        <PARAMETER NAME="C_GEN_HBLANK_EN" VALUE="1"/>
-        <PARAMETER NAME="C_GEN_HBLANK_POLARITY" VALUE="1"/>
-        <PARAMETER NAME="C_GEN_HFRAME_SIZE" VALUE="1650"/>
-        <PARAMETER NAME="C_GEN_HSYNC_EN" VALUE="1"/>
-        <PARAMETER NAME="C_GEN_HSYNC_END" VALUE="1430"/>
-        <PARAMETER NAME="C_GEN_HSYNC_POLARITY" VALUE="1"/>
-        <PARAMETER NAME="C_GEN_HSYNC_START" VALUE="1390"/>
-        <PARAMETER NAME="C_GEN_INTERLACED" VALUE="0"/>
-        <PARAMETER NAME="C_GEN_VACTIVE_SIZE" VALUE="720"/>
-        <PARAMETER NAME="C_GEN_VBLANK_EN" VALUE="1"/>
-        <PARAMETER NAME="C_GEN_VBLANK_POLARITY" VALUE="1"/>
-        <PARAMETER NAME="C_GEN_VIDEO_FORMAT" VALUE="2"/>
-        <PARAMETER NAME="C_GEN_VSYNC_EN" VALUE="1"/>
-        <PARAMETER NAME="C_GEN_VSYNC_POLARITY" VALUE="1"/>
-        <PARAMETER NAME="C_HAS_AXI4_LITE" VALUE="0"/>
-        <PARAMETER NAME="C_HAS_INTC_IF" VALUE="1"/>
-        <PARAMETER NAME="C_INTERLACE_EN" VALUE="0"/>
-        <PARAMETER NAME="C_MAX_LINES" VALUE="4096"/>
-        <PARAMETER NAME="C_MAX_PIXELS" VALUE="4096"/>
-        <PARAMETER NAME="C_NUM_FSYNCS" VALUE="1"/>
-        <PARAMETER NAME="C_SYNC_EN" VALUE="0"/>
-        <PARAMETER NAME="C_VID_PPC" VALUE="4"/>
-        <PARAMETER NAME="ARBITRARY_RES_EN" VALUE="false"/>
-        <PARAMETER NAME="C_FAMILY" VALUE="virtex7"/>
-        <PARAMETER NAME="Component_Name" VALUE="design_1_v_tc_0_1"/>
-        <PARAMETER NAME="DET_FIELDID_EN" VALUE="false"/>
-        <PARAMETER NAME="FSYNC_HSTART0" VALUE="0"/>
-        <PARAMETER NAME="FSYNC_HSTART1" VALUE="0"/>
-        <PARAMETER NAME="FSYNC_HSTART2" VALUE="0"/>
-        <PARAMETER NAME="FSYNC_HSTART3" VALUE="0"/>
-        <PARAMETER NAME="FSYNC_HSTART4" VALUE="0"/>
-        <PARAMETER NAME="FSYNC_HSTART5" VALUE="0"/>
-        <PARAMETER NAME="FSYNC_HSTART6" VALUE="0"/>
-        <PARAMETER NAME="FSYNC_HSTART7" VALUE="0"/>
-        <PARAMETER NAME="FSYNC_HSTART8" VALUE="0"/>
-        <PARAMETER NAME="FSYNC_HSTART9" VALUE="0"/>
-        <PARAMETER NAME="FSYNC_HSTART10" VALUE="0"/>
-        <PARAMETER NAME="FSYNC_HSTART11" VALUE="0"/>
-        <PARAMETER NAME="FSYNC_HSTART12" VALUE="0"/>
-        <PARAMETER NAME="FSYNC_HSTART13" VALUE="0"/>
-        <PARAMETER NAME="FSYNC_HSTART14" VALUE="0"/>
-        <PARAMETER NAME="FSYNC_HSTART15" VALUE="0"/>
-        <PARAMETER NAME="FSYNC_VSTART0" VALUE="0"/>
-        <PARAMETER NAME="FSYNC_VSTART1" VALUE="0"/>
-        <PARAMETER NAME="FSYNC_VSTART2" VALUE="0"/>
-        <PARAMETER NAME="FSYNC_VSTART3" VALUE="0"/>
-        <PARAMETER NAME="FSYNC_VSTART4" VALUE="0"/>
-        <PARAMETER NAME="FSYNC_VSTART5" VALUE="0"/>
-        <PARAMETER NAME="FSYNC_VSTART6" VALUE="0"/>
-        <PARAMETER NAME="FSYNC_VSTART7" VALUE="0"/>
-        <PARAMETER NAME="FSYNC_VSTART8" VALUE="0"/>
-        <PARAMETER NAME="FSYNC_VSTART9" VALUE="0"/>
-        <PARAMETER NAME="FSYNC_VSTART10" VALUE="0"/>
-        <PARAMETER NAME="FSYNC_VSTART11" VALUE="0"/>
-        <PARAMETER NAME="FSYNC_VSTART12" VALUE="0"/>
-        <PARAMETER NAME="FSYNC_VSTART13" VALUE="0"/>
-        <PARAMETER NAME="FSYNC_VSTART14" VALUE="0"/>
-        <PARAMETER NAME="FSYNC_VSTART15" VALUE="0"/>
-        <PARAMETER NAME="GEN_ACHROMA_POLARITY" VALUE="High"/>
-        <PARAMETER NAME="GEN_AVIDEO_POLARITY" VALUE="High"/>
-        <PARAMETER NAME="GEN_CPARITY" VALUE="0"/>
-        <PARAMETER NAME="GEN_F0_VBLANK_HEND" VALUE="640"/>
-        <PARAMETER NAME="GEN_F0_VBLANK_HSTART" VALUE="640"/>
-        <PARAMETER NAME="GEN_F0_VFRAME_SIZE" VALUE="750"/>
-        <PARAMETER NAME="GEN_F0_VSYNC_HEND" VALUE="695"/>
-        <PARAMETER NAME="GEN_F0_VSYNC_HSTART" VALUE="640"/>
-        <PARAMETER NAME="GEN_F0_VSYNC_VEND" VALUE="729"/>
-        <PARAMETER NAME="GEN_F0_VSYNC_VSTART" VALUE="724"/>
-        <PARAMETER NAME="GEN_F1_VBLANK_HEND" VALUE="1390"/>
-        <PARAMETER NAME="GEN_F1_VBLANK_HSTART" VALUE="1390"/>
-        <PARAMETER NAME="GEN_F1_VFRAME_SIZE" VALUE="750"/>
-        <PARAMETER NAME="GEN_F1_VSYNC_HEND" VALUE="1390"/>
-        <PARAMETER NAME="GEN_F1_VSYNC_HSTART" VALUE="1390"/>
-        <PARAMETER NAME="GEN_F1_VSYNC_VEND" VALUE="729"/>
-        <PARAMETER NAME="GEN_F1_VSYNC_VSTART" VALUE="724"/>
-        <PARAMETER NAME="GEN_FIELDID_EN" VALUE="false"/>
-        <PARAMETER NAME="GEN_FIELDID_POLARITY" VALUE="High"/>
-        <PARAMETER NAME="GEN_HACTIVE_SIZE" VALUE="1280"/>
-        <PARAMETER NAME="GEN_HBLANK_POLARITY" VALUE="High"/>
-        <PARAMETER NAME="GEN_HFRAME_SIZE" VALUE="1650"/>
-        <PARAMETER NAME="GEN_HSYNC_END" VALUE="1430"/>
-        <PARAMETER NAME="GEN_HSYNC_POLARITY" VALUE="High"/>
-        <PARAMETER NAME="GEN_HSYNC_START" VALUE="1390"/>
-        <PARAMETER NAME="GEN_INTERLACED" VALUE="false"/>
-        <PARAMETER NAME="GEN_VACTIVE_SIZE" VALUE="720"/>
-        <PARAMETER NAME="GEN_VBLANK_POLARITY" VALUE="High"/>
-        <PARAMETER NAME="GEN_VIDEO_FORMAT" VALUE="RGB"/>
-        <PARAMETER NAME="GEN_VSYNC_POLARITY" VALUE="High"/>
-        <PARAMETER NAME="HAS_AXI4_LITE" VALUE="false"/>
-        <PARAMETER NAME="HAS_INTC_IF" VALUE="true"/>
-        <PARAMETER NAME="INTERLACE_EN" VALUE="false"/>
-        <PARAMETER NAME="SYNC_EN" VALUE="false"/>
-        <PARAMETER NAME="VIDEO_MODE" VALUE="720p"/>
-        <PARAMETER NAME="VID_PPC" VALUE="4"/>
-        <PARAMETER NAME="active_chroma_detection" VALUE="false"/>
-        <PARAMETER NAME="active_chroma_generation" VALUE="false"/>
-        <PARAMETER NAME="active_video_detection" VALUE="true"/>
-        <PARAMETER NAME="active_video_generation" VALUE="true"/>
-        <PARAMETER NAME="auto_generation_mode" VALUE="false"/>
-        <PARAMETER NAME="enable_detection" VALUE="true"/>
-        <PARAMETER NAME="enable_generation" VALUE="false"/>
-        <PARAMETER NAME="frame_syncs" VALUE="1"/>
-        <PARAMETER NAME="horizontal_blank_detection" VALUE="true"/>
-        <PARAMETER NAME="horizontal_blank_generation" VALUE="true"/>
-        <PARAMETER NAME="horizontal_sync_detection" VALUE="true"/>
-        <PARAMETER NAME="horizontal_sync_generation" VALUE="true"/>
-        <PARAMETER NAME="max_clocks_per_line" VALUE="4096"/>
-        <PARAMETER NAME="max_lines_per_frame" VALUE="4096"/>
-        <PARAMETER NAME="vertical_blank_detection" VALUE="true"/>
-        <PARAMETER NAME="vertical_blank_generation" VALUE="true"/>
-        <PARAMETER NAME="vertical_sync_detection" VALUE="true"/>
-        <PARAMETER NAME="vertical_sync_generation" VALUE="true"/>
-        <PARAMETER NAME="EDK_IPTYPE" VALUE="PERIPHERAL"/>
-      </PARAMETERS>
-      <PORTS>
-        <PORT DIR="I" NAME="active_video_in" SIGIS="undef" SIGNAME="v_tc_1_active_video_in">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="v_vid_in_axi4s_0" PORT="vtd_active_video"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk" SIGIS="clk" SIGNAME="dvi2rgb_0_PixelClk">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="dvi2rgb_0" PORT="PixelClk"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="clken" POLARITY="ACTIVE_HIGH" SIGIS="ce"/>
-        <PORT DIR="I" NAME="det_clken" SIGIS="undef"/>
-        <PORT DIR="I" NAME="hblank_in" SIGIS="undef" SIGNAME="v_tc_1_hblank_in">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="v_vid_in_axi4s_0" PORT="vtd_hblank"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="hsync_in" SIGIS="undef" SIGNAME="v_tc_1_hsync_in">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="v_vid_in_axi4s_0" PORT="vtd_hsync"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" LEFT="31" NAME="intc_if" RIGHT="0" SIGIS="undef"/>
-        <PORT DIR="I" NAME="resetn" POLARITY="ACTIVE_LOW" SIGIS="rst" SIGNAME="proc_sys_reset_0_peripheral_aresetn">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="proc_sys_reset_0" PORT="peripheral_aresetn"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="sof_state" SIGIS="undef"/>
-        <PORT DIR="I" NAME="vblank_in" SIGIS="undef" SIGNAME="v_tc_1_vblank_in">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="v_vid_in_axi4s_0" PORT="vtd_vblank"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="I" NAME="vsync_in" SIGIS="undef" SIGNAME="v_tc_1_vsync_in">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="v_vid_in_axi4s_0" PORT="vtd_vsync"/>
-          </CONNECTIONS>
-        </PORT>
-      </PORTS>
-      <BUSINTERFACES>
-        <BUSINTERFACE BUSNAME="v_vid_in_axi4s_0_vtiming_out" NAME="vtiming_in" TYPE="TARGET" VLNV="xilinx.com:interface:video_timing:2.0">
-          <PORTMAPS>
-            <PORTMAP LOGICAL="ACTIVE_VIDEO" PHYSICAL="active_video_in"/>
-            <PORTMAP LOGICAL="HBLANK" PHYSICAL="hblank_in"/>
-            <PORTMAP LOGICAL="HSYNC" PHYSICAL="hsync_in"/>
-            <PORTMAP LOGICAL="VBLANK" PHYSICAL="vblank_in"/>
-            <PORTMAP LOGICAL="VSYNC" PHYSICAL="vsync_in"/>
-          </PORTMAPS>
-        </BUSINTERFACE>
-      </BUSINTERFACES>
-    </MODULE>
     <MODULE COREREVISION="7" FULLNAME="/v_vid_in_axi4s_0" HWVERSION="5.0" INSTANCE="v_vid_in_axi4s_0" IPTYPE="PERIPHERAL" IS_ENABLE="1" MODCLASS="PERIPHERAL" MODTYPE="v_vid_in_axi4s" VLNV="xilinx.com:ip:v_vid_in_axi4s:5.0">
       <DOCUMENTS>
         <DOCUMENT SOURCE="http://www.xilinx.com/cgi-bin/docs/ipdoc?c=v_vid_in_axi4s;v=v5_0;d=pg043_v_vid_in_axi4s.pdf"/>
@@ -10083,41 +9799,18 @@
             <CONNECTION INSTANCE="dvi2rgb_0" PORT="PixelClk"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="I" NAME="vid_io_in_reset" POLARITY="ACTIVE_HIGH" SIGIS="rst" SIGNAME="proc_sys_reset_0_peripheral_reset">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="proc_sys_reset_0" PORT="peripheral_reset"/>
-          </CONNECTIONS>
-        </PORT>
+        <PORT DIR="I" NAME="vid_io_in_reset" POLARITY="ACTIVE_HIGH" SIGIS="rst"/>
         <PORT DIR="I" NAME="vid_vsync" SIGIS="undef" SIGNAME="dvi2rgb_0_vid_pVSync">
           <CONNECTIONS>
             <CONNECTION INSTANCE="dvi2rgb_0" PORT="vid_pVSync"/>
           </CONNECTIONS>
         </PORT>
-        <PORT DIR="O" NAME="vtd_active_video" SIGIS="undef" SIGNAME="v_tc_1_active_video_in">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="v_tc_1" PORT="active_video_in"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="vtd_hblank" SIGIS="undef" SIGNAME="v_tc_1_hblank_in">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="v_tc_1" PORT="hblank_in"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="vtd_hsync" SIGIS="undef" SIGNAME="v_tc_1_hsync_in">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="v_tc_1" PORT="hsync_in"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="vtd_vblank" SIGIS="undef" SIGNAME="v_tc_1_vblank_in">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="v_tc_1" PORT="vblank_in"/>
-          </CONNECTIONS>
-        </PORT>
-        <PORT DIR="O" NAME="vtd_vsync" SIGIS="undef" SIGNAME="v_tc_1_vsync_in">
-          <CONNECTIONS>
-            <CONNECTION INSTANCE="v_tc_1" PORT="vsync_in"/>
-          </CONNECTIONS>
-        </PORT>
+        <PORT DIR="O" NAME="vtd_active_video" SIGIS="undef"/>
+        <PORT DIR="O" NAME="vtd_field_id" SIGIS="undef"/>
+        <PORT DIR="O" NAME="vtd_hblank" SIGIS="undef"/>
+        <PORT DIR="O" NAME="vtd_hsync" SIGIS="undef"/>
+        <PORT DIR="O" NAME="vtd_vblank" SIGIS="undef"/>
+        <PORT DIR="O" NAME="vtd_vsync" SIGIS="undef"/>
       </PORTS>
       <BUSINTERFACES>
         <BUSINTERFACE BUSNAME="v_vid_in_axi4s_0_video_out" NAME="video_out" TYPE="INITIATOR" VLNV="xilinx.com:interface:axis:1.0">
@@ -10142,9 +9835,10 @@
             <PORTMAP LOGICAL="TVALID" PHYSICAL="m_axis_video_tvalid"/>
           </PORTMAPS>
         </BUSINTERFACE>
-        <BUSINTERFACE BUSNAME="v_vid_in_axi4s_0_vtiming_out" NAME="vtiming_out" TYPE="INITIATOR" VLNV="xilinx.com:interface:video_timing:2.0">
+        <BUSINTERFACE BUSNAME="__NOC__" NAME="vtiming_out" TYPE="INITIATOR" VLNV="xilinx.com:interface:video_timing:2.0">
           <PORTMAPS>
             <PORTMAP LOGICAL="ACTIVE_VIDEO" PHYSICAL="vtd_active_video"/>
+            <PORTMAP LOGICAL="FIELD" PHYSICAL="vtd_field_id"/>
             <PORTMAP LOGICAL="HBLANK" PHYSICAL="vtd_hblank"/>
             <PORTMAP LOGICAL="HSYNC" PHYSICAL="vtd_hsync"/>
             <PORTMAP LOGICAL="VBLANK" PHYSICAL="vtd_vblank"/>
