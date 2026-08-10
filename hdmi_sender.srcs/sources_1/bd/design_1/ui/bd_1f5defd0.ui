@@ -59,8 +59,8 @@ preplace netloc rgb2dvi_0_TMDS 1 8 1 NJ 660
 preplace netloc v_axi4s_vid_out_0_vid_io_out 1 7 1 N 630
 preplace netloc v_tc_0_vtiming_out 1 6 1 N 640
 preplace netloc axi_smc_M01_AXI 1 4 1 1180 300n
-preplace netloc pattern_sender_0_pout 1 5 1 1480 320n
 preplace netloc v_vid_in_axi4s_0_video_out 1 4 1 1190 320n
+preplace netloc pattern_sender_0_pout 1 5 1 1480 320n
 levelinfo -pg 1 0 200 480 700 990 1330 1670 2070 2480 2750
 pagesize -pg 1 -db -bbox -sgen -100 0 2910 1060
 "
