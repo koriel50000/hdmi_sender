@@ -10,12 +10,12 @@ def initial_fbuf ():
         for x in range(32):
             base[y + 24][x][0] = 0x80
             base[y][x + 32][0] = 0xc0
-    return np.tile(base, (10, 10, 3))
+    return np.tile(base, (15, 20, 3))
 
 def video_initialize (vdma):
     # video width and height
-    VWIDTH = 640
-    VHEIGHT =480
+    VWIDTH = 1280
+    VHEIGHT =720
     
     # frame buffers
     fbuf0 = allocate(shape=(VHEIGHT, VWIDTH, 3), dtype=np.uint8)
@@ -70,21 +70,12 @@ vdma = pl.axi_vdma_0
 
 fbuf0, fbuf1, fbuf2 = video_initialize(vdma)
 start_time = current_time = time.time()
-current_frame = -1
-frame_processed = 0
 
 while current_time - start_time < 20:
     current_time = time.time()
-    frame = math.floor((current_time - start_time) * 60)
-    if current_frame == frame:
-        continue
-    current_frame = frame
-    frame_processed += 1
     
-    sender.register_map.frame = current_frame
     sender.register_map.CTRL.AP_START = 1
     while sender.register_map.CTRL.AP_DONE == 0:
         pass
 
 video_finalize(vdma, fbuf0, fbuf1, fbuf2)
-frame_processed

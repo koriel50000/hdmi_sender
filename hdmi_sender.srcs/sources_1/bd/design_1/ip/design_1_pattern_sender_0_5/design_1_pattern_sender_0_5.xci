@@ -1,22 +1,22 @@
 {
   "schema": "xilinx.com:schema:json_instance:1.0",
   "ip_inst": {
-    "xci_name": "design_1_pattern_sender_0_3",
+    "xci_name": "design_1_pattern_sender_0_5",
     "cell_name": "pattern_sender_0",
     "component_reference": "xilinx.com:hls:pattern_sender:1.0",
-    "ip_revision": "2114735551",
-    "gen_directory": "../../../../../../hdmi_sender.gen/sources_1/bd/design_1/ip/design_1_pattern_sender_0_3",
+    "ip_revision": "2114735642",
+    "gen_directory": "../../../../../../hdmi_sender.gen/sources_1/bd/design_1/ip/design_1_pattern_sender_0_5",
     "parameters": {
       "component_parameters": {
-        "Component_Name": [ { "value": "design_1_pattern_sender_0_3", "resolve_type": "user", "usage": "all" } ],
+        "Component_Name": [ { "value": "design_1_pattern_sender_0_5", "resolve_type": "user", "usage": "all" } ],
         "clk_period": [ { "value": "10", "enabled": false, "usage": "all" } ],
         "machine": [ { "value": "64", "enabled": false, "usage": "all" } ],
         "combinational": [ { "value": "0", "enabled": false, "usage": "all" } ],
-        "latency": [ { "value": "307203", "enabled": false, "usage": "all" } ],
-        "II": [ { "value": "307200", "enabled": false, "usage": "all" } ]
+        "latency": [ { "value": "921603", "enabled": false, "usage": "all" } ],
+        "II": [ { "value": "921600", "enabled": false, "usage": "all" } ]
       },
       "model_parameters": {
-        "C_S_AXI_CTRL_ADDR_WIDTH": [ { "value": "5", "resolve_type": "generated", "format": "long", "usage": "all" } ],
+        "C_S_AXI_CTRL_ADDR_WIDTH": [ { "value": "4", "resolve_type": "generated", "format": "long", "usage": "all" } ],
         "C_S_AXI_CTRL_DATA_WIDTH": [ { "value": "32", "format": "long", "usage": "all" } ]
       },
       "project_parameters": {
@@ -34,9 +34,9 @@
       },
       "runtime_parameters": {
         "IPCONTEXT": [ { "value": "IP_Integrator" } ],
-        "IPREVISION": [ { "value": "2114735551" } ],
+        "IPREVISION": [ { "value": "2114735642" } ],
         "MANAGED": [ { "value": "TRUE" } ],
-        "OUTPUTDIR": [ { "value": "../../../../../../hdmi_sender.gen/sources_1/bd/design_1/ip/design_1_pattern_sender_0_3" } ],
+        "OUTPUTDIR": [ { "value": "../../../../../../hdmi_sender.gen/sources_1/bd/design_1/ip/design_1_pattern_sender_0_5" } ],
         "SELECTEDSIMMODEL": [ { "value": "" } ],
         "SHAREDDIR": [ { "value": "../../ipshared" } ],
         "SWVERSION": [ { "value": "2025.2.1" } ],
@@ -45,10 +45,10 @@
     },
     "boundary": {
       "ports": {
-        "s_axi_ctrl_ARADDR": [ { "direction": "in", "size_left": "4", "size_right": "0" } ],
+        "s_axi_ctrl_ARADDR": [ { "direction": "in", "size_left": "3", "size_right": "0" } ],
         "s_axi_ctrl_ARREADY": [ { "direction": "out" } ],
         "s_axi_ctrl_ARVALID": [ { "direction": "in" } ],
-        "s_axi_ctrl_AWADDR": [ { "direction": "in", "size_left": "4", "size_right": "0" } ],
+        "s_axi_ctrl_AWADDR": [ { "direction": "in", "size_left": "3", "size_right": "0" } ],
         "s_axi_ctrl_AWREADY": [ { "direction": "out" } ],
         "s_axi_ctrl_AWVALID": [ { "direction": "in" } ],
         "s_axi_ctrl_BREADY": [ { "direction": "in" } ],
@@ -91,7 +91,7 @@
           "mode": "slave",
           "memory_map_ref": "s_axi_ctrl",
           "parameters": {
-            "ADDR_WIDTH": [ { "value": "5", "value_src": "constant", "value_permission": "bd_and_user", "usage": "all" } ],
+            "ADDR_WIDTH": [ { "value": "4", "value_src": "constant", "value_permission": "bd_and_user", "usage": "all" } ],
             "DATA_WIDTH": [ { "value": "32", "value_src": "constant", "value_permission": "bd_and_user", "usage": "all" } ],
             "PROTOCOL": [ { "value": "AXI4LITE", "value_src": "constant", "value_permission": "bd_and_user", "usage": "all" } ],
             "READ_WRITE_MODE": [ { "value": "READ_WRITE", "value_src": "constant", "value_permission": "bd_and_user", "usage": "all" } ],
@@ -407,22 +407,6 @@
                       "access": "read-only"
                     }
                   }
-                },
-                "frame": {
-                  "address_offset": "16",
-                  "size": 32,
-                  "display_name": "frame",
-                  "description": "Data signal of frame",
-                  "access": "write-only",
-                  "reset_value": "0",
-                  "fields": {
-                    "frame": {
-                      "bit_offset": 0,
-                      "bit_width": 32,
-                      "description": "Bit 31 to 0 of frame",
-                      "access": "write-only"
-                    }
-                  }
                 }
               }
             }
@@ -431,5 +415,5 @@
       }
     }
   },
-  "checksum": "a4ec7e39"
+  "checksum": "c5ef52bd"
 }

@@ -3,10 +3,9 @@
 
 #include "define.h"
 
-void pattern_sender (int frame, hls::stream<pixel_t> &pin, hls::stream<pixel_t> &pout)
+void pattern_sender (hls::stream<pixel_t> &pin, hls::stream<pixel_t> &pout)
 {
 #pragma HLS INTERFACE s_axilite port=return bundle=ctrl
-#pragma HLS INTERFACE s_axilite port=frame bundle=ctrl
 #pragma HLS INTERFACE axis port=pin
 #pragma HLS INTERFACE axis port=pout
 
@@ -17,11 +16,12 @@ void pattern_sender (int frame, hls::stream<pixel_t> &pin, hls::stream<pixel_t> 
     ap_uint<9> col_x;
     ap_uint<8> col_y;
     const ap_uint<8> zero = 0x00;
+    int frame = 0;
     
     col_y = (frame >> 1) & 0xff;
-    for (int y = 0; y < 480; y++) {
+    for (int y = 0; y < 720; y++) {
         col_x = frame & 0x1ff;
-        for (int x = 0; x < 640; x++) {
+        for (int x = 0; x < 1280; x++) {
 #pragma HLS PIPELINE
             pin >> ptmp;
             if (160 <= x && x < 480 && 160 <= y && y < 320) {
@@ -32,7 +32,7 @@ void pattern_sender (int frame, hls::stream<pixel_t> &pin, hls::stream<pixel_t> 
                 p.data = ptmp.data;
             }
             p.user[0] = (x == 0 && y == 0);
-            p.last    = (x == 639);
+            p.last    = (x == 1279);
             pout << p;
             col_x++;
         }

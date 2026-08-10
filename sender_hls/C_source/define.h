@@ -7,4 +7,4 @@
 
 typedef ap_axiu<24,1,1,1> pixel_t;
 
-void pattern_sender (int, hls::stream<pixel_t> &, hls::stream<pixel_t> &);
+void pattern_sender (hls::stream<pixel_t> &, hls::stream<pixel_t> &);
