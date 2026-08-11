@@ -69,13 +69,24 @@ sender = pl.pattern_sender_0
 vdma = pl.axi_vdma_0
 
 fbuf0, fbuf1, fbuf2 = video_initialize(vdma)
-start_time = current_time = time.time()
+
+start_time = time.time()
+frame_processed = 0
 
 while current_time - start_time < 30:
-    current_time = time.time()
-    
     sender.register_map.CTRL.AP_START = 1
     while sender.register_map.CTRL.AP_DONE == 0:
         pass
+    
+    frame_processed += 1
+    elapsed = time.time() - start_time
+    fps = frame_processed / elapsed
+    
+    sys.stdout.write(f"\rFPS: {fps:.2f}")
+    sys.stdout.flush()
+    
+    if elapsed > 30:
+        break
 
 video_finalize(vdma, fbuf0, fbuf1, fbuf2)
+frame_processed
