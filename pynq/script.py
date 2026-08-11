@@ -2,6 +2,7 @@
 # ライセンスについては LICENSE.txt を参照してください．
 
 from pynq import allocate
+import sys
 import numpy as np
 
 def initial_fbuf ():
