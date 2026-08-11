@@ -73,7 +73,7 @@ fbuf0, fbuf1, fbuf2 = video_initialize(vdma)
 start_time = time.time()
 frame_processed = 0
 
-while current_time - start_time < 30:
+while True:
     sender.register_map.CTRL.AP_START = 1
     while sender.register_map.CTRL.AP_DONE == 0:
         pass
