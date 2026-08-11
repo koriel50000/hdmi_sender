@@ -2,7 +2,6 @@
 # ライセンスについては LICENSE.txt を参照してください．
 
 from pynq import allocate
-import sys
 import numpy as np
 
 def initial_fbuf ():
@@ -62,6 +61,7 @@ def video_finalize (vdma, fbuf0, fbuf1, fbuf2):
 
 # main routine
 from pynq import Overlay
+import sys
 import time
 import math
 
@@ -90,4 +90,4 @@ while True:
         break
 
 video_finalize(vdma, fbuf0, fbuf1, fbuf2)
-frame_processed
+print()
