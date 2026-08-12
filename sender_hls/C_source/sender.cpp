@@ -7,552 +7,125 @@ void write_params(ap_uint<64>* params, hls::stream<axis_data64>& ins) {
     int ptr = 0;
 	axis_data64 pkt;
 
-	// YuNetBackbone stage0
-	// Conv_head
-
-	// torch.Size([16, 3, 3, 3])
-	// torch.Size([16, 7])
-	for (int i = 0; i < 16 * 9 + 16 * 4; i++) {
-		pkt.data = params[ptr++];
-        pkt.last = (i == 16 * 9 + 16 * 4 - 1);
-		ins.write(pkt);
-	}
-
-    // Conv_head ConvDPUnit
-
-    // torch.Size([16, 1, 1, 16])
-    // torch.Size([16, 14])
-    for (int i = 0; i < 16 * 1 + 16 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 16 * 1 + 16 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // torch.Size([16, 1, 1, 9])
-    // torch.Size([16, 7])
-    for (int i = 0; i < 16 * 1 + 16 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 16 * 1 + 16 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // YuNetBackbone stage1
-    // YuNetBackbone Conv4layerBlock 1
-
-    // torch.Size([16, 1, 1, 16])
-    // torch.Size([16, 14])
-    for (int i = 0; i < 16 * 1 + 16 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 16 * 1 + 16 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // torch.Size([16, 1, 1, 9])
-    // torch.Size([16, 7])
-    for (int i = 0; i < 16 * 1 + 16 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 16 * 1 + 16 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // YuNetBackbone Conv4layerBlock 2
-
-    // torch.Size([64, 1, 1, 16])
-    // torch.Size([64, 14])
-    for (int i = 0; i < 64 * 1 + 64 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 64 * 1 + 64 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // torch.Size([64, 1, 1, 9])
-    // torch.Size([64, 7])
-    for (int i = 0; i < 64 * 1 + 64 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 64 * 1 + 64 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // YuNetBackbone stage2
-    // YuNetBackbone Conv4layerBlock 1
-
-    // torch.Size([64, 1, 1, 64])
-    // torch.Size([64, 14])
-    for (int i = 0; i < 64 * 1 * 4 + 64 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 64 * 1 * 4 + 64 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // torch.Size([64, 1, 1, 9])
-    // torch.Size([64, 7])
-    for (int i = 0; i < 64 * 1 + 64 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 64 * 1 + 64 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // YuNetBackbone Conv4layerBlock 2
-
-    // torch.Size([64, 1, 1, 64])
-    // torch.Size([64, 14])
-    for (int i = 0; i < 64 * 1 * 4 + 64 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 64 * 1 * 4 + 64 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // torch.Size([64, 1, 1, 9])
-    // torch.Size([64, 7])
-    for (int i = 0; i < 64 * 1 + 64 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 64 * 1 + 64 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // YuNetBackbone stage3
-    // YuNetBackbone Conv4layerBlock 1
-
-    // torch.Size([64, 1, 1, 64])
-    // torch.Size([64, 14])
-    for (int i = 0; i < 64 * 1 * 4 + 64 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 64 * 1 * 4 + 64 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // torch.Size([64, 1, 1, 9])
-    // torch.Size([64, 7])
-    for (int i = 0; i < 64 * 1 + 64 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 64 * 1 + 64 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // YuNetBackbone Conv4layerBlock 2
-
-    // torch.Size([64, 1, 1, 64])
-    // torch.Size([64, 14])
-    for (int i = 0; i < 64 * 1 * 4 + 64 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 64 * 1 * 4 + 64 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // torch.Size([64, 1, 1, 9])
-    // torch.Size([64, 7])
-    for (int i = 0; i < 64 * 1 + 64 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 64 * 1 + 64 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // YuNetBackbone stage4
-    // YuNetBackbone Conv4layerBlock 1
-
-    // torch.Size([64, 1, 1, 64])
-    // torch.Size([64, 14])
-    for (int i = 0; i < 64 * 1 * 4 + 64 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 64 * 1 * 4 + 64 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // torch.Size([64, 1, 1, 9])
-    // torch.Size([64, 7])
-    for (int i = 0; i < 64 * 1 + 64 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 64 * 1 + 64 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // YuNetBackbone Conv4layerBlock 2
-
-    // torch.Size([64, 1, 1, 64])
-    // torch.Size([64, 14])
-    for (int i = 0; i < 64 * 1 * 4 + 64 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 64 * 1 * 4 + 64 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // torch.Size([64, 1, 1, 9])
-    // torch.Size([64, 7])
-    for (int i = 0; i < 64 * 1 + 64 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 64 * 1 + 64 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // YuNetBackbone stage5
-    // YuNetBackbone Conv4layerBlock 1
-
-    // torch.Size([64, 1, 1, 64])
-    // torch.Size([64, 14])
-    for (int i = 0; i < 64 * 1 * 4 + 64 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 64 * 1 * 4 + 64 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // torch.Size([64, 1, 1, 9])
-    // torch.Size([64, 7])
-    for (int i = 0; i < 64 * 1 + 64 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 64 * 1 + 64 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // YuNetBackbone Conv4layerBlock 2
-
-    // torch.Size([64, 1, 1, 64])
-    // torch.Size([64, 14])
-    for (int i = 0; i < 64 * 1 * 4 + 64 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 64 * 1 * 4 + 64 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // torch.Size([64, 1, 1, 9])
-    // torch.Size([64, 7])
-    for (int i = 0; i < 64 * 1 + 64 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 64 * 1 + 64 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // TFPN stride32
-    // TFPN ConvDPUnit
-
-    // torch.Size([64, 1, 1, 64])
-    // torch.Size([64, 14])
-    for (int i = 0; i < 64 * 1 * 4 + 64 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 64 * 1 * 4 + 64 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // torch.Size([64, 1, 1, 9])
-    // torch.Size([64, 7])
-    for (int i = 0; i < 64 * 1 + 64 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 64 * 1 + 64 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // TFPN stride16
-    // TFPN ConvDPUnit
-
-    // torch.Size([64, 1, 1, 64])
-    // torch.Size([64, 14])
-    for (int i = 0; i < 64 * 1 * 4 + 64 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 64 * 1 * 4 + 64 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // torch.Size([64, 1, 1, 9])
-    // torch.Size([64, 7])
-    for (int i = 0; i < 64 * 1 + 64 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 64 * 1 + 64 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // TFPN stride8
-    // TFPN ConvDPUnit
-
-    // torch.Size([64, 1, 1, 64])
-    // torch.Size([64, 14])
-    for (int i = 0; i < 64 * 1 * 4 + 64 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 64 * 1 * 4 + 64 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // torch.Size([64, 1, 1, 9])
-    // torch.Size([64, 7])
-    for (int i = 0; i < 64 * 1 + 64 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 64 * 1 + 64 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // YuNet_Head stride8
-    // YuNet_Head shared ConvDPUnit
-
-    // torch.Size([64, 1, 1, 64])
-    // torch.Size([64, 14])
-    for (int i = 0; i < 64 * 1 * 4 + 64 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 64 * 1 * 4 + 64 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // torch.Size([64, 1, 1, 9])
-    // torch.Size([64, 7])
-    for (int i = 0; i < 64 * 1 + 64 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 64 * 1 + 64 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // YuNet_Head stride16
-    // YuNet_Head shared ConvDPUnit
-
-    // torch.Size([64, 1, 1, 64])
-    // torch.Size([64, 14])
-    for (int i = 0; i < 64 * 1 * 4 + 64 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 64 * 1 * 4 + 64 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // torch.Size([64, 1, 1, 9])
-    // torch.Size([64, 7])
-    for (int i = 0; i < 64 * 1 + 64 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 64 * 1 + 64 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // YuNet_Head stride32
-    // YuNet_Head shared ConvDPUnit
-
-    // torch.Size([64, 1, 1, 64])
-    // torch.Size([64, 14])
-    for (int i = 0; i < 64 * 1 * 4 + 64 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 64 * 1 * 4 + 64 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // torch.Size([64, 1, 1, 9])
-    // torch.Size([64, 7])
-    for (int i = 0; i < 64 * 1 + 64 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 64 * 1 + 64 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // YuNet_Head cls ConvDPUnit
-    // YuNet_Head stride8
-
-    // torch.Size([1, 1, 1, 64])
-    // torch.Size([1, 14])
-    for (int i = 0; i < 1 * 1 * 4 + 1 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 1 * 1 * 4 + 1 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // torch.Size([1, 1, 1, 9])
-    // torch.Size([1, 14])
-    for (int i = 0; i < 1 * 1 + 1 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 1 * 1 + 1 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // YuNet_Head stride16
-
-    // torch.Size([1, 1, 1, 64])
-    // torch.Size([1, 14])
-    for (int i = 0; i < 1 * 1 * 4 + 1 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 1 * 1 * 4 + 1 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // torch.Size([1, 1, 1, 9])
-    // torch.Size([1, 14])
-    for (int i = 0; i < 1 * 1 + 1 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 1 * 1 + 1 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // YuNet_Head stride32
-
-    // torch.Size([1, 1, 1, 64])
-    // torch.Size([1, 14])
-    for (int i = 0; i < 1 * 1 * 4 + 1 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 1 * 1 * 4 + 1 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // torch.Size([1, 1, 1, 9])
-    // torch.Size([1, 14])
-    for (int i = 0; i < 1 * 1 + 1 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 1 * 1 + 1 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // YuNet_Head bbox ConvDPUnit
-    // YuNet_Head stride8
-
-    // torch.Size([4, 1, 1, 64])
-    // torch.Size([4, 14])
-    for (int i = 0; i < 4 * 1 * 4 + 4 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 4 * 1 * 4 + 4 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // torch.Size([4, 1, 1, 9])
-    // torch.Size([4, 14])
-    for (int i = 0; i < 4 * 1 + 4 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 4 * 1 + 4 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // YuNet_Head stride16
-
-    // torch.Size([4, 1, 1, 64])
-    // torch.Size([4, 14])
-    for (int i = 0; i < 4 * 1 * 4 + 4 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 4 * 1 * 4 + 4 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // torch.Size([4, 1, 1, 9])
-    // torch.Size([4, 14])
-    for (int i = 0; i < 4 * 1 + 4 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 4 * 1 + 4 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // YuNet_Head stride32
-
-    // torch.Size([4, 1, 1, 64])
-    // torch.Size([4, 14])
-    for (int i = 0; i < 4 * 1 * 4 + 4 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 4 * 1 * 4 + 4 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // torch.Size([4, 1, 1, 9])
-    // torch.Size([4, 14])
-    for (int i = 0; i < 4 * 1 + 4 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 4 * 1 + 4 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // YuNet_Head obj ConvDPUnit
-    // YuNet_Head stride8
-
-    // torch.Size([1, 1, 1, 64])
-    // torch.Size([1, 14])
-    for (int i = 0; i < 1 * 1 * 4 + 1 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 1 * 1 * 4 + 1 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // torch.Size([1, 1, 1, 9])
-    // torch.Size([1, 14])
-    for (int i = 0; i < 1 * 1 + 1 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 1 * 1 + 1 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // YuNet_Head stride16
-
-    // torch.Size([1, 1, 1, 64])
-    // torch.Size([1, 14])
-    for (int i = 0; i < 1 * 1 * 4 + 1 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 1 * 1 * 4 + 1 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // torch.Size([1, 1, 1, 9])
-    // torch.Size([1, 14])
-    for (int i = 0; i < 1 * 1 + 1 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 1 * 1 + 1 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // YuNet_Head stride32
-
-    // torch.Size([1, 1, 1, 64])
-    // torch.Size([1, 14])
-    for (int i = 0; i < 1 * 1 * 4 + 1 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 1 * 1 * 4 + 1 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // torch.Size([1, 1, 1, 9])
-    // torch.Size([1, 14])
-    for (int i = 0; i < 1 * 1 + 1 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 1 * 1 + 1 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // YuNet_Head kps ConvDPUnit
-    // YuNet_Head stride8
-
-    // torch.Size([10, 1, 1, 64])
-    // torch.Size([10, 14])
-    for (int i = 0; i < 10 * 1 * 4 + 10 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 10 * 1 * 4 + 10 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // torch.Size([10, 1, 1, 9])
-    // torch.Size([10, 14])
-    for (int i = 0; i < 10 * 1 + 10 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 10 * 1 + 10 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // YuNet_Head stride16
-
-    // torch.Size([10, 1, 1, 64])
-    // torch.Size([10, 14])
-    for (int i = 0; i < 10 * 1 * 4 + 10 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 10 * 1 * 4 + 10 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // torch.Size([10, 1, 1, 9])
-    // torch.Size([10, 14])
-    for (int i = 0; i < 10 * 1 + 10 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 10 * 1 + 10 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // YuNet_Head stride32
-
-    // torch.Size([10, 1, 1, 64])
-    // torch.Size([10, 14])
-    for (int i = 0; i < 10 * 1 * 4 + 10 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 10 * 1 * 4 + 10 * 4 - 1);
-        ins.write(pkt);
-    }
-
-    // torch.Size([10, 1, 1, 9])
-    // torch.Size([10, 14])
-    for (int i = 0; i < 10 * 1 + 10 * 4; i++) {
-        pkt.data = params[ptr++];
-        pkt.last = (i == 10 * 1 + 10 * 4 - 1);
-        ins.write(pkt);
+    static constexpr int param_counts[] = {
+        // YuNetBackbone stage0
+        // Conv_head
+        16 * 9 + 16 * 4,
+        // Conv_head ConvDPUnit
+        16 * 1 * 4 + 16 * 4,
+        16 * 1 + 16 * 4,
+        // YuNetBackbone stage1
+        // YuNetBackbone Conv4layerBlock 1
+        16 * 1 + 16 * 4,
+        16 * 1 + 16 * 4,
+        // YuNetBackbone Conv4layerBlock 2
+        64 * 1 + 64 * 4,
+        64 * 1 + 64 * 4,
+        // YuNetBackbone stage2
+        // YuNetBackbone Conv4layerBlock 1
+        64 * 1 * 4 + 64 * 4,
+        64 * 1 + 64 * 4,
+        // YuNetBackbone Conv4layerBlock 2
+        64 * 1 * 4 + 64 * 4,
+        64 * 1 + 64 * 4,
+        // YuNetBackbone stage3
+        // YuNetBackbone Conv4layerBlock 1
+        64 * 1 * 4 + 64 * 4,
+        64 * 1 + 64 * 4,
+        // YuNetBackbone Conv4layerBlock 2
+        64 * 1 * 4 + 64 * 4,
+        64 * 1 + 64 * 4,
+        // YuNetBackbone stage4
+        // YuNetBackbone Conv4layerBlock 1
+        64 * 1 * 4 + 64 * 4,
+        64 * 1 + 64 * 4,
+        // YuNetBackbone Conv4layerBlock 2
+        64 * 1 * 4 + 64 * 4,
+        64 * 1 + 64 * 4,
+        // YuNetBackbone stage5
+        // YuNetBackbone Conv4layerBlock 1
+        64 * 1 * 4 + 64 * 4,
+        64 * 1 + 64 * 4,
+        // YuNetBackbone Conv4layerBlock 2
+        64 * 1 * 4 + 64 * 4,
+        64 * 1 + 64 * 4,
+
+        // TFPN stride32
+        // TFPN ConvDPUnit
+        64 * 1 * 4 + 64 * 4,
+        64 * 1 + 64 * 4,
+        // TFPN stride16
+        // TFPN ConvDPUnit
+        64 * 1 * 4 + 64 * 4,
+        64 * 1 + 64 * 4,
+        // TFPN stride8
+        // TFPN ConvDPUnit
+        64 * 1 * 4 + 64 * 4,
+        64 * 1 + 64 * 4,
+        // YuNet_Head stride8
+        // YuNet_Head shared ConvDPUnit
+        64 * 1 * 4 + 64 * 4,
+        64 * 1 + 64 * 4,
+        // YuNet_Head stride16
+        // YuNet_Head shared ConvDPUnit
+        64 * 1 * 4 + 64 * 4,
+        64 * 1 + 64 * 4,
+        // YuNet_Head stride32
+        // YuNet_Head shared ConvDPUnit
+        64 * 1 * 4 + 64 * 4,
+        64 * 1 + 64 * 4,
+
+        // YuNet_Head cls ConvDPUnit
+        // YuNet_Head stride8
+        1 * 1 * 4 + 1 * 4,
+        1 * 1 + 1 * 4,
+        // YuNet_Head stride16
+        1 * 1 * 4 + 1 * 4,
+        1 * 1 + 1 * 4,
+        // YuNet_Head stride32
+        1 * 1 * 4 + 1 * 4,
+        1 * 1 + 1 * 4,
+
+        // YuNet_Head bbox ConvDPUnit
+        // YuNet_Head stride8
+        4 * 1 * 4 + 4 * 4,
+        4 * 1 + 4 * 4,
+        // YuNet_Head stride16
+        4 * 1 * 4 + 4 * 4,
+        4 * 1 + 4 * 4,
+        // YuNet_Head stride32
+        4 * 1 * 4 + 4 * 4,
+        4 * 1 + 4 * 4,
+
+        // YuNet_Head obj ConvDPUnit
+        // YuNet_Head stride8
+        1 * 1 * 4 + 1 * 4,
+        1 * 1 + 1 * 4,
+        // YuNet_Head stride16
+        1 * 1 * 4 + 1 * 4,
+        1 * 1 + 1 * 4,
+        // YuNet_Head stride32
+        1 * 1 * 4 + 1 * 4,
+        1 * 1 + 1 * 4,
+
+        // YuNet_Head kps ConvDPUnit
+        // YuNet_Head stride8
+        10 * 1 * 4 + 10 * 4,
+        10 * 1 + 10 * 4,
+        // YuNet_Head stride16
+        10 * 1 * 4 + 10 * 4,
+        10 * 1 + 10 * 4,
+        // YuNet_Head stride32
+        10 * 1 * 4 + 10 * 4,
+        10 * 1 + 10 * 4
+    };
+    
+    for (int j = 0; j < sizeof(param_counts) / sizeof(param_counts[0]); j++) {
+        for (int i = 0; i < param_counts[j]; i++) {
+            pkt.data = params[ptr++];
+            pkt.last = (i == param_counts[j] - 1);
+            ins.write(pkt);
+        }
     }
 }
 
@@ -619,16 +192,16 @@ void pattern_sender(hls::stream<pixel_t>& pin, hls::stream<pixel_t>& pout,
             ap_uint<24> d = ptmp.data;
 
             bool detected = false;
-//             for (int i = 0; i < MAX_DETECTS; i++) {
-// #pragma HLS UNROLL
-//                 if (i < detect_count) {
-//                     if (x >= detects[i].x1 && x <  detects[i].x2 &&
-//                         y >= detects[i].y1 && y <  detects[i].y2)
-//                     {
-//                         detected = true;
-//                     }
-//                 }
-//             }
+            for (int i = 0; i < MAX_DETECTS; i++) {
+#pragma HLS UNROLL
+                if (i < detect_count) {
+                    if (x >= detects[i].x1 && x <  detects[i].x2 &&
+                        y >= detects[i].y1 && y <  detects[i].y2)
+                    {
+                        detected = true;
+                    }
+                }
+            }
             if (detected) {
                 p.data = 0xff0000;
             } else {
@@ -655,6 +228,6 @@ void pattern_sender(hls::stream<pixel_t>& pin, hls::stream<pixel_t>& pout,
         }
     }
 
-    // write_params(params, yunet_ins);
+    write_params(params, yunet_ins);
     read_detects(yunet_outs, detects, detect_count);
 }
