@@ -3,6 +3,7 @@
 
 from pynq import allocate
 import numpy as np
+import yunet_params
 
 def initial_fbuf ():
     base = np.zeros((48, 64, 1), dtype=np.uint8)
@@ -68,6 +69,15 @@ import math
 pl = Overlay("design_1.bit")
 sender = pl.pattern_sender_0
 vdma = pl.axi_vdma_0
+
+params_np = yunet_params.load_params()
+total_params = len(params_np)
+
+params_buf = allocate(shape=(total_params,), dtype=np.uint64)
+params_buf[:] = params_np
+
+sender.register_map.params = params_buf.device_address
+sender.register_map.params_size = total_params
 
 fbuf0, fbuf1, fbuf2 = video_initialize(vdma)
 
