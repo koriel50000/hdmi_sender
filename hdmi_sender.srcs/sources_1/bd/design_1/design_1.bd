@@ -34,8 +34,8 @@
       "clk_wiz_1": "",
       "one": "",
       "smartconnect_0": "",
-      "pattern_sender_0": "",
-      "yunet_0": ""
+      "yunet_0": "",
+      "pattern_sender_0": ""
     },
     "interface_ports": {
       "DDR": {
@@ -3085,9 +3085,17 @@
           }
         }
       },
+      "yunet_0": {
+        "vlnv": "arp-corp:yunet:yunet:1.0",
+        "ip_revision": "2114741322",
+        "xci_name": "design_1_yunet_0_4",
+        "xci_path": "ip\\design_1_yunet_0_4\\design_1_yunet_0_4.xci",
+        "inst_hier_path": "yunet_0",
+        "has_run_ip_tcl": "true"
+      },
       "pattern_sender_0": {
         "vlnv": "xilinx.com:hls:pattern_sender:1.0",
-        "ip_revision": "2114738383",
+        "ip_revision": "2114741353",
         "xci_name": "design_1_pattern_sender_0_1",
         "xci_path": "ip\\design_1_pattern_sender_0_1\\design_1_pattern_sender_0_1.xci",
         "inst_hier_path": "pattern_sender_0",
@@ -3118,14 +3126,6 @@
             }
           }
         }
-      },
-      "yunet_0": {
-        "vlnv": "arp-corp:yunet:yunet:1.0",
-        "ip_revision": "2114739018",
-        "xci_name": "design_1_yunet_0_3",
-        "xci_path": "ip\\design_1_yunet_0_3\\design_1_yunet_0_3.xci",
-        "inst_hier_path": "yunet_0",
-        "has_run_ip_tcl": "true"
       }
     },
     "interface_nets": {
@@ -3203,8 +3203,8 @@
       },
       "pattern_sender_0_yunet_ins": {
         "interface_ports": [
-          "yunet_0/ins",
-          "pattern_sender_0/yunet_ins"
+          "pattern_sender_0/yunet_ins",
+          "yunet_0/ins"
         ]
       },
       "processing_system7_0_DDR": {
@@ -3350,8 +3350,8 @@
           "clk_wiz_1/clk_in1",
           "v_vid_in_axi4s_0/aclk",
           "smartconnect_0/aclk",
-          "pattern_sender_0/ap_clk",
-          "yunet_0/ap_clk"
+          "yunet_0/ap_clk",
+          "pattern_sender_0/ap_clk"
         ]
       },
       "processing_system7_0_FCLK_RESET0_N": {
@@ -3372,8 +3372,8 @@
           "v_axi4s_vid_out_0/aresetn",
           "axi_intc_0/s_axi_aresetn",
           "smartconnect_0/aresetn",
-          "pattern_sender_0/ap_rst_n",
-          "yunet_0/ap_rst_n"
+          "yunet_0/ap_rst_n",
+          "pattern_sender_0/ap_rst_n"
         ]
       },
       "rst_ps7_0_100M_peripheral_reset": {

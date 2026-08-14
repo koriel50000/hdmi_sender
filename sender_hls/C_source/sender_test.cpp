@@ -2,7 +2,7 @@
 // ライセンスについては LICENSE.txt を参照してください．
 
 #include <stdio.h>
-#include "define.h"
+#include "sender.hpp"
 
 unsigned int pattern_checksum (hls::stream<pixel_t> &pdata)
 {

@@ -1,9 +1,6 @@
-// Pattern Sender (HLS) for PYNQ 2021.07.13 Naoki F., AIT
-// ライセンスについては LICENSE.txt を参照してください．
+#include "sender.hpp"
 
-#include "define.h"
-
-void write_params(ap_uint<64>* params, hls::stream<axis_data64>& ins) {
+void write_params(ap_uint<64>* params, fifo<axis_data64>& ins) {
     int ptr = 0;
 	axis_data64 pkt;
 
@@ -129,7 +126,7 @@ void write_params(ap_uint<64>* params, hls::stream<axis_data64>& ins) {
     }
 }
 
-void read_detects(hls::stream<axis_data8>& outs, Detect detects[MAX_DETECTS], ap_uint<8>& count) {
+void read_detects(fifo<axis_data8>& outs, Detect detects[MAX_DETECTS], ap_uint<8>& count) {
 #pragma HLS INLINE off
 
     axis_data8 data;
@@ -141,8 +138,6 @@ void read_detects(hls::stream<axis_data8>& outs, Detect detects[MAX_DETECTS], ap
             axis_data8 dats[16];
 #pragma HLS ARRAY_PARTITION variable=dats complete
 
-            // Python:
-            // dats = recv_output(16)
             for (int j = 0; j < 16; j++) {
 #pragma HLS PIPELINE
                 dats[j] = outs.read();
@@ -162,8 +157,8 @@ void read_detects(hls::stream<axis_data8>& outs, Detect detects[MAX_DETECTS], ap
     }
 }
 
-void pattern_sender(hls::stream<pixel_t>& pin, hls::stream<pixel_t>& pout,
-    hls::stream<axis_data64>& yunet_ins, hls::stream<axis_data8>& yunet_outs,
+void pattern_sender(fifo<pixel_t>& pin, fifo<pixel_t>& pout,
+    fifo<axis_data64>& yunet_ins, fifo<axis_data8>& yunet_outs,
     ap_uint<64>* params, ap_uint<32> params_size)
 {
 #pragma HLS INTERFACE axis port=pin

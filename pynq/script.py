@@ -84,20 +84,21 @@ fbuf0, fbuf1, fbuf2 = video_initialize(vdma)
 start_time = time.time()
 frame_processed = 0
 
-while True:
-    sender.register_map.CTRL.AP_START = 1
-    while sender.register_map.CTRL.AP_DONE == 0:
-        pass
-    
-    frame_processed += 1
-    elapsed = time.time() - start_time
-    fps = frame_processed / elapsed
-    
-    sys.stdout.write(f"\rFPS: {fps:.2f}")
-    sys.stdout.flush()
-    
-    if elapsed > 30:
-        break
-
-video_finalize(vdma, fbuf0, fbuf1, fbuf2)
-print()
+try:
+    while True:
+        sender.register_map.CTRL.AP_START = 1
+        while sender.register_map.CTRL.AP_DONE == 0:
+            pass
+        
+        frame_processed += 1
+        elapsed = time.time() - start_time
+        fps = frame_processed / elapsed
+        
+        sys.stdout.write(f"\rFPS: {fps:.2f}")
+        sys.stdout.flush()
+        
+        if elapsed > 30:
+            break
+finally:
+    video_finalize(vdma, fbuf0, fbuf1, fbuf2)
+    print()
